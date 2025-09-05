@@ -1,6 +1,5 @@
 import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import LoadingSpinner from "../UI/LoadingSpinner";
 import PageLoadingSpinner from "../UI/PageLoadingSpinner";
 
 const PublicRoute = ({ children }) => {
