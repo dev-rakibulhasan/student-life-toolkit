@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import "dotenv/config";
 import cors from "cors";
 import authRouter from "./Routes/Auth.js";
+import classRouter from "./Routes/Class.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
@@ -31,6 +32,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // Routes
 app.use("/api/auth", authRouter);
+app.use("/api/class", classRouter);
 
 // Start the server
 app.listen(PORT, () => {
