@@ -6,6 +6,7 @@ import "dotenv/config";
 import cors from "cors";
 import authRouter from "./Routes/Auth.js";
 import classRouter from "./Routes/Class.js";
+import budgetRouter from "./Routes/Budget.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
@@ -33,7 +34,7 @@ app.get("/", (req: Request, res: Response) => {
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/class", classRouter);
-app.use("/api/budget", classRouter);
+app.use("/api/budget", budgetRouter);
 
 // Start the server
 app.listen(PORT, () => {

@@ -6,6 +6,7 @@ import AuthenticatedLayout from "./components/Layout/Auth/AuthenticatedLayout";
 import PublicLayout from "./components/Layout/Public/PublicLayout";
 import NotFound from "./pages/partial/NotFound";
 import ClassSchedules from "./pages/user/ClassSchedules";
+import BudgetTracker from "./pages/user/BudgetTracker";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         {/* Routes with drawer layout */}
         <Route element={<AuthenticatedLayout />}>
           <Route path="/class-schedules" element={<ClassSchedules />} />
+          <Route path="/budget-tracker" element={<BudgetTracker />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

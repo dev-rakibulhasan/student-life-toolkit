@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { ClassProvider } from "./contexts/ClassContext.jsx";
+import { BudgetProvider } from "./contexts/BudgetContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <ClassProvider>
-        <App />
+        <BudgetProvider>
+          <App />
+        </BudgetProvider>
       </ClassProvider>
     </AuthProvider>
   </StrictMode>

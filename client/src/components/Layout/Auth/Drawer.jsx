@@ -52,8 +52,8 @@ const Drawer = ({ children }) => {
       ),
     },
     {
-      name: "Plans",
-      path: "/plans",
+      name: "Budget Tracker",
+      path: "/budget-tracker",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
