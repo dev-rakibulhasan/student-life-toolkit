@@ -33,6 +33,7 @@ app.get("/", (req: Request, res: Response) => {
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/class", classRouter);
+app.use("/api/budget", classRouter);
 
 // Start the server
 app.listen(PORT, () => {
