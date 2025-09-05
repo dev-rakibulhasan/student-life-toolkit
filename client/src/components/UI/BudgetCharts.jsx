@@ -1,4 +1,3 @@
-// components/UI/BudgetCharts.js
 import React from "react";
 
 const BudgetCharts = ({ summary, timePeriod = "Lifetime" }) => {

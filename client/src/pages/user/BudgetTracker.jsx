@@ -1,4 +1,3 @@
-// pages/BudgetTracker.js
 import React, { useState, useEffect } from "react";
 import useBudget from "../../hooks/useBudget";
 import BudgetCharts from "../../components/UI/BudgetCharts";

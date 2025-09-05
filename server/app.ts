@@ -7,6 +7,7 @@ import cors from "cors";
 import authRouter from "./Routes/Auth.js";
 import classRouter from "./Routes/Class.js";
 import budgetRouter from "./Routes/Budget.js";
+import questionRouter from "./Routes/Question.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
@@ -35,6 +36,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/auth", authRouter);
 app.use("/api/class", classRouter);
 app.use("/api/budget", budgetRouter);
+app.use("/api/question", questionRouter);
 
 // Start the server
 app.listen(PORT, () => {
