@@ -26,13 +26,12 @@ const classSchema: Schema<IClass> = new Schema<IClass>(
       type: String,
       required: true,
       enum: [
+        "Saturday",
+        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
       ],
     },
     instructor: {

@@ -6,13 +6,15 @@ export const getAllClasses = async (
   req: Request,
   res: Response
 ): Promise<void> => {
+  const user = req.query.userId;
   try {
-    const classes = await Class.find({ user: req.user.id }).sort({
+    const classes = await Class.find({ user }).sort({
       day: 1,
       time: 1,
     });
     res.json(classes);
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -22,7 +24,7 @@ export const addNewClass = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { subject, time, day, instructor, color } = req.body;
+    const { subject, time, day, instructor, color, userId } = req.body;
 
     const newClass = new Class({
       subject,
@@ -30,12 +32,13 @@ export const addNewClass = async (
       day,
       instructor,
       color,
-      user: req.user.id,
+      user: userId,
     });
 
     const savedClass = await newClass.save();
     res.json(savedClass);
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -45,10 +48,10 @@ export const updateClass = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { subject, time, day, instructor, color } = req.body;
+    const { subject, time, day, instructor, color, userId } = req.body;
 
     const updatedClass = await Class.findOneAndUpdate(
-      { _id: req.params.id, user: req.user.id },
+      { _id: req.params.id, user: userId },
       { subject, time, day, instructor, color },
       { new: true }
     );
@@ -70,7 +73,6 @@ export const deleteClass = async (
   try {
     const deletedClass = await Class.findOneAndDelete({
       _id: req.params.id,
-      user: req.user.id,
     });
 
     if (!deletedClass) {

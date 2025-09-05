@@ -8,9 +8,9 @@ import {
 
 const classRouter = Router();
 
-classRouter.get("/", getAllClasses);
-classRouter.post("/", addNewClass);
-classRouter.put("/:id", updateClass);
-classRouter.delete("/:id", deleteClass);
+classRouter.get("/all", getAllClasses);
+classRouter.post("/add", addNewClass);
+classRouter.put("/update/:id", updateClass);
+classRouter.delete("/delete/:id", deleteClass);
 
 export default classRouter;

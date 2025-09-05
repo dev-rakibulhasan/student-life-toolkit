@@ -6,7 +6,7 @@ const PublicRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  const gateRoutes = ["/login", "/register", "/forgot-password"];
+  const gateRoutes = ["/login", "/register"];
 
   if (loading) {
     return <PageLoadingSpinner />;
@@ -21,7 +21,7 @@ const PublicRoute = ({ children }) => {
       return children;
     }
 
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/class-schedules" replace />;
   }
 
   return children;

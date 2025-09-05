@@ -116,14 +116,6 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <div className="text-center">
-              <p>
-                Forgot password?{" "}
-                <Link to="/reset-password" className="link link-primary">
-                  Reset here
-                </Link>
-              </p>
-            </div>
           </form>
         </div>
       </div>

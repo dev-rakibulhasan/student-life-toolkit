@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
-import axios from "axios";
+import api from "../services/api";
+import { useAuth } from "../hooks/useAuth";
 
-const ClassContext = createContext();
+export const ClassContext = createContext();
 
 const classReducer = (state, action) => {
   switch (action.type) {
@@ -28,10 +29,11 @@ const classReducer = (state, action) => {
 
 export const ClassProvider = ({ children }) => {
   const [state, dispatch] = useReducer(classReducer, { classes: [] });
+  const { user } = useAuth();
 
   const fetchClasses = async () => {
     try {
-      const res = await axios.get("/api/classes", {
+      const res = await api.get(`/class/all?userId=${user._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "SET_CLASSES", payload: res.data });
@@ -42,7 +44,7 @@ export const ClassProvider = ({ children }) => {
 
   const addClass = async (classData) => {
     try {
-      const res = await axios.post("/api/classes", classData, {
+      const res = await api.post("/class/add", classData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "ADD_CLASS", payload: res.data });
@@ -55,7 +57,7 @@ export const ClassProvider = ({ children }) => {
 
   const updateClass = async (id, classData) => {
     try {
-      const res = await axios.put(`/api/classes/${id}`, classData, {
+      const res = await api.put(`/class/update/${id}`, classData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "UPDATE_CLASS", payload: res.data });
@@ -68,7 +70,7 @@ export const ClassProvider = ({ children }) => {
 
   const deleteClass = async (id) => {
     try {
-      await axios.delete(`/api/classes/${id}`, {
+      await api.delete(`/class/delete/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "DELETE_CLASS", payload: id });

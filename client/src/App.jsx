@@ -5,6 +5,7 @@ import Register from "./pages/public/Register";
 import AuthenticatedLayout from "./components/Layout/Auth/AuthenticatedLayout";
 import PublicLayout from "./components/Layout/Public/PublicLayout";
 import NotFound from "./pages/partial/NotFound";
+import ClassSchedules from "./pages/user/ClassSchedules";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         </Route>
 
         {/* Routes with drawer layout */}
-        <Route element={<AuthenticatedLayout />}>{/*  */}</Route>
+        <Route element={<AuthenticatedLayout />}>
+          <Route path="/class-schedules" element={<ClassSchedules />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

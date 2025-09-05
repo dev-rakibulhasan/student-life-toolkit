@@ -25,7 +25,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <li>{<Link to="/dashboard">Dashboard</Link>}</li>
+              <li>{<Link to="/class-schedules">Classes</Link>}</li>
               <li>
                 <button onClick={logout}>Log out</button>
               </li>
