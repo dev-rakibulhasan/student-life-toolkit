@@ -77,7 +77,7 @@ const BudgetTracker = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-wrap justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Budget Tracker</h1>
         <button className="btn btn-primary" onClick={() => setShowForm(true)}>
           Add New Item

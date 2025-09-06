@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useQuestion from "../../hooks/ussQuistion";
 import useAuth from "../../hooks/useAuth";
@@ -152,8 +152,8 @@ const ManualQuestionForm = () => {
               >
                 <option value="">Select a subject</option>
                 {subjects.map((subject) => (
-                  <option key={subject} value={subject}>
-                    {subject}
+                  <option key={subject._id} value={subject.name}>
+                    {subject.name}
                   </option>
                 ))}
               </select>

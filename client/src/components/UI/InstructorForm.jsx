@@ -204,6 +204,7 @@ const InstructorForm = ({ instructor = null, onClose, onSuccess }) => {
             <label className="label">
               <span className="label-text">Website</span>
             </label>
+            <br />
             <input
               type="url"
               name="website"
@@ -223,6 +224,7 @@ const InstructorForm = ({ instructor = null, onClose, onSuccess }) => {
             <label className="label">
               <span className="label-text">Notes</span>
             </label>
+            <br />
             <textarea
               name="notes"
               value={formData.notes}

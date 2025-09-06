@@ -137,8 +137,8 @@ const QuestionEditForm = ({ question, onClose, onUpdate }) => {
               >
                 <option value="">Select a subject</option>
                 {subjects.map((subject) => (
-                  <option key={subject} value={subject}>
-                    {subject}
+                  <option key={subject._id} value={subject.name}>
+                    {subject.name}
                   </option>
                 ))}
               </select>

@@ -163,9 +163,9 @@ const ExamQAGenerator = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-wrap justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Manage Questions</h1>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             className={`btn ${
               view === "generate" ? "btn-primary" : "btn-ghost"
@@ -209,8 +209,8 @@ const ExamQAGenerator = () => {
                 onChange={(e) => handleFilterChange("subject", e.target.value)}
               >
                 {filterOptions.subjects.map((subject) => (
-                  <option key={subject._id} value={subject.name}>
-                    {subject.name}
+                  <option key={subject} value={subject}>
+                    {subject}
                   </option>
                 ))}
               </select>
