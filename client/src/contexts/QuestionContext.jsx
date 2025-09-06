@@ -81,20 +81,6 @@ export const QuestionProvider = ({ children }) => {
       return { success: false, error: error.response?.data?.message };
     }
   };
-  const getQuestion = async (id) => {
-    try {
-      const res = await api.get(`/question/single/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      return { success: true, question: res.data };
-    } catch (error) {
-      console.error("Error fetching question:", error);
-      return {
-        success: false,
-        error: error.response?.data?.message || "Failed to fetch question",
-      };
-    }
-  };
   const updateQuestion = async (id, questionData) => {
     try {
       const res = await api.put(`/question/update/${id}`, questionData, {
@@ -132,7 +118,6 @@ export const QuestionProvider = ({ children }) => {
         generateQuestions,
         fetchQuestions,
         addQuestion,
-        getQuestion,
         updateQuestion,
         deleteQuestion,
       }}

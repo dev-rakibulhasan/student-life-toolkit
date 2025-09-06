@@ -165,18 +165,7 @@ export const updateQuestion = async (
       options,
       correctAnswer,
       explanation,
-      userId,
     } = req.body;
-
-    // Find the question and verify ownership
-    const existingQuestion = await Question.findOne({
-      _id: req.params.id,
-      user: userId,
-    });
-
-    if (!existingQuestion) {
-      res.status(404).json({ message: "Question not found" });
-    }
 
     // Validate question type and options
     if (type === "multiple_choice" && (!options || options.length < 2)) {
@@ -204,28 +193,6 @@ export const updateQuestion = async (
     res.json(updatedQuestion);
   } catch (error: any) {
     console.error("Error updating question:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-// Get a specific question
-export const getSingleQuestion = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
-    const question = await Question.findOne({
-      _id: req.params.id,
-    });
-
-    if (!question) {
-      res.status(404).json({ message: "Question not found" });
-    }
-
-    res.json(question);
-  } catch (error: any) {
-    console.error("Error fetching question:", error);
-
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };

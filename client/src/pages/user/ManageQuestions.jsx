@@ -5,9 +5,11 @@ import QuestionDisplay from "../../components/UI/QuestionDisplay";
 import useQuestion from "../../hooks/ussQuistion";
 import ManualQuestionForm from "../../components/UI/ManualQuestionForm";
 import QuestionLibrary from "../../components/UI/QuestionLibrary";
+import QuestionEditForm from "../../components/UI/QuestionEditForm";
 
 const ExamQAGenerator = () => {
-  const { questions, fetchQuestions, deleteQuestion } = useQuestion();
+  const { questions, fetchQuestions, deleteQuestion, updateQuestion } =
+    useQuestion();
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [view, setView] = useState("generate");
   const [filters, setFilters] = useState({
@@ -17,7 +19,7 @@ const ExamQAGenerator = () => {
     type: "All",
     search: "",
   });
-
+  const [editingQuestion, setEditingQuestion] = useState(null);
   // Performance tracking state
   const [userAnswers, setUserAnswers] = useState({});
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -81,6 +83,20 @@ const ExamQAGenerator = () => {
     setCurrentQuestions(newQuestions);
     setView("practice");
     fetchQuestions();
+  };
+  const handleEditQuestion = (question) => {
+    setEditingQuestion(question);
+  };
+
+  const handleUpdateQuestion = async (updatedQuestion) => {
+    try {
+      await updateQuestion(editingQuestion._id, updatedQuestion);
+      toast.success("Question updated successfully!");
+      setEditingQuestion(null);
+      fetchQuestions(filters);
+    } catch (error) {
+      toast.error("Failed to update question");
+    }
   };
   const handleDeleteQuestion = async (id) => {
     await deleteQuestion(id);
@@ -329,6 +345,7 @@ const ExamQAGenerator = () => {
             filteredQuestions={filteredQuestions}
             questions={questions}
             onDelete={handleDeleteQuestion}
+            onEdit={handleEditQuestion}
           />
         </div>
       )}
@@ -339,6 +356,7 @@ const ExamQAGenerator = () => {
             filteredQuestions={filteredQuestions}
             questions={questions}
             onDelete={handleDeleteQuestion}
+            onEdit={handleEditQuestion}
           />
         </div>
       )}
@@ -502,6 +520,13 @@ const ExamQAGenerator = () => {
             </div>
           </div>
         </div>
+      )}
+      {editingQuestion && (
+        <QuestionEditForm
+          question={editingQuestion}
+          onClose={() => setEditingQuestion(null)}
+          onUpdate={handleUpdateQuestion}
+        />
       )}
     </div>
   );
