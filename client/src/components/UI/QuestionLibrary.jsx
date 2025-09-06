@@ -35,7 +35,7 @@ const QuestionLibrary = ({
                       : q.difficulty === "medium"
                       ? "badge-warning"
                       : "badge-error"
-                  }`}
+                  } capitalize`}
                 >
                   {q.difficulty}
                 </span>

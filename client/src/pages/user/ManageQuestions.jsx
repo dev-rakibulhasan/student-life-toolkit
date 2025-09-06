@@ -504,25 +504,6 @@ const ExamQAGenerator = () => {
                 </button>
               </div>
             </div>
-
-            <div className="card bg-base-100 shadow">
-              <div className="card-body">
-                <h3 className="card-title">Quick Actions</h3>
-                <button
-                  className="btn btn-primary btn-block"
-                  onClick={() => setView("generate")}
-                >
-                  Generate New Questions
-                </button>
-                <button
-                  className="btn btn-ghost btn-block"
-                  onClick={() => setCurrentQuestions([])}
-                  disabled={currentQuestions.length === 0}
-                >
-                  Clear Current Set
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       )}

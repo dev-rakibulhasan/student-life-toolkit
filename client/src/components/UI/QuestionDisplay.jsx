@@ -133,7 +133,7 @@ const QuestionDisplay = ({
                 : currentQuestion.difficulty === "medium"
                 ? "badge-warning"
                 : "badge-error"
-            }`}
+            } capitalize`}
           >
             {currentQuestion.difficulty}
           </span>
