@@ -7,7 +7,11 @@ export const QuestionContext = createContext();
 const questionReducer = (state, action) => {
   switch (action.type) {
     case "SET_QUESTIONS":
-      return { ...state, questions: action.payload };
+      return {
+        ...state,
+        questions: action.payload.questions,
+        totalQuestions: action.payload.totalQuestions,
+      };
     case "ADD_QUESTION":
       return { ...state, questions: [action.payload, ...state.questions] };
     case "ADD_QUESTIONS":
@@ -114,6 +118,7 @@ export const QuestionProvider = ({ children }) => {
     <QuestionContext.Provider
       value={{
         questions: state.questions,
+        totalQuestions: state.totalQuestions,
         loading: state.loading,
         generateQuestions,
         fetchQuestions,

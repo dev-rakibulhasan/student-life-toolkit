@@ -2,7 +2,7 @@ import React from "react";
 
 const QuestionLibrary = ({
   filteredQuestions,
-  questions,
+  totalQuestions,
   onDelete,
   onEdit,
 }) => {
@@ -14,9 +14,9 @@ const QuestionLibrary = ({
         <div className="stats shadow mb-4">
           <div className="stat">
             <div className="stat-title">Total Questions</div>
-            <div className="stat-value">{filteredQuestions.length}</div>
+            <div className="stat-value">{totalQuestions}</div>
             <div className="stat-desc">
-              {questions.length} total • {filteredQuestions.length} filtered
+              {totalQuestions} total • {filteredQuestions.length} filtered
             </div>
           </div>
         </div>

@@ -8,8 +8,13 @@ import QuestionLibrary from "../../components/UI/QuestionLibrary";
 import QuestionEditForm from "../../components/UI/QuestionEditForm";
 
 const ExamQAGenerator = () => {
-  const { questions, fetchQuestions, deleteQuestion, updateQuestion } =
-    useQuestion();
+  const {
+    questions,
+    totalQuestions,
+    fetchQuestions,
+    deleteQuestion,
+    updateQuestion,
+  } = useQuestion();
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [view, setView] = useState("generate");
   const [filters, setFilters] = useState({
@@ -343,7 +348,7 @@ const ExamQAGenerator = () => {
           <QuestionGenerator onQuestionsGenerated={handleQuestionsGenerated} />
           <QuestionLibrary
             filteredQuestions={filteredQuestions}
-            questions={questions}
+            totalQuestions={totalQuestions}
             onDelete={handleDeleteQuestion}
             onEdit={handleEditQuestion}
           />
@@ -354,7 +359,7 @@ const ExamQAGenerator = () => {
           <ManualQuestionForm />
           <QuestionLibrary
             filteredQuestions={filteredQuestions}
-            questions={questions}
+            totalQuestions={totalQuestions}
             onDelete={handleDeleteQuestion}
             onEdit={handleEditQuestion}
           />

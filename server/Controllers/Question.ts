@@ -75,7 +75,6 @@ export const generatedQuestionsByAi = async (
 };
 
 // Get questions
-// Get user's generated questions
 export const getAllQuestions = async (
   req: Request,
   res: Response
@@ -106,7 +105,8 @@ export const getAllQuestions = async (
     }
 
     const questions = await Question.find(filter).sort({ createdAt: -1 });
-    res.json(questions);
+    const totalQuestions = await Question.countDocuments();
+    res.json({ questions, totalQuestions });
   } catch (error: any) {
     console.error("Error fetching questions:", error);
     res.status(500).json({ message: error.message });
