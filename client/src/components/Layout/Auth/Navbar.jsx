@@ -1,6 +1,6 @@
 import React from "react";
 import ThemeToggler from "../../UI/ThemeToggler";
-import { useAuth } from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
   const { user } = useAuth();

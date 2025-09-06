@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import api from "../services/api";
-import { useAuth } from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export const BudgetContext = createContext();
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useBudget from "../../hooks/useBudget";
-import { useAuth } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const BudgetForm = ({ editItem = null, onClose }) => {
   const { addBudgetItem, updateBudgetItem } = useBudget();

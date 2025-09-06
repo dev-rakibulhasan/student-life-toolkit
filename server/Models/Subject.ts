@@ -36,4 +36,4 @@ const subjectSchema: Schema<ISubject> = new mongoose.Schema<ISubject>(
   }
 );
 
-export default model<ISubject>("Question", subjectSchema);
+export default model<ISubject>("Subject", subjectSchema);

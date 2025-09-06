@@ -9,6 +9,7 @@ import ClassSchedules from "./pages/user/ClassSchedules";
 import BudgetTracker from "./pages/user/BudgetTracker";
 import ManageQuestions from "./pages/user/ManageQuestions";
 import ToastProvider from "./components/UI/ToastProvider";
+import MySubjects from "./pages/user/MySubjects";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/class-schedules" element={<ClassSchedules />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
           <Route path="/manage-questions" element={<ManageQuestions />} />
+          <Route path="/my-subjects" element={<MySubjects />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

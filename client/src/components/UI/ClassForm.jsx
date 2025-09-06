@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useClass } from "../../hooks/useClass";
-import { useAuth } from "../../hooks/useAuth";
+import useClass from "../../hooks/useClass";
+import useAuth from "../../hooks/useAuth";
 import { days, formatTime, timeSlots } from "../../Utils";
 
 const ClassForm = ({ editClass = null, onClose, isTimeSlotBooked }) => {

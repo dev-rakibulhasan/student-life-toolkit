@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import useQuestion from "../../hooks/ussQuistion";
-import { useAuth } from "../../hooks/useAuth";
-import { questionTypes, subjects } from "../../Utils";
+import useAuth from "../../hooks/useAuth";
+import { questionTypes } from "../../Utils";
+import useSubject from "../../hooks/useSubject";
 
 const ManualQuestionForm = () => {
   const { addQuestion, fetchQuestions } = useQuestion();
+  const { subjects, fetchSubjects } = useSubject();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     type: "multiple_choice",
@@ -40,7 +42,9 @@ const ManualQuestionForm = () => {
       setFormData((prev) => ({ ...prev, options: [...prev.options, ""] }));
     }
   };
-
+  useEffect(() => {
+    fetchSubjects();
+  }, []);
   const removeOption = (index) => {
     if (formData.options.length > 2) {
       const newOptions = formData.options.filter((_, i) => i !== index);

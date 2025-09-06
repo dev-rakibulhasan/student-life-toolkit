@@ -16,26 +16,6 @@ export const getAllSubjects = async (
   }
 };
 
-// Get a specific subject
-export const getSingleSubject = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
-    const subject = await Subject.findOne({
-      _id: req.params.id,
-    });
-
-    if (!subject) {
-      res.status(404).json({ message: "Subject not found" });
-    }
-
-    res.json(subject);
-  } catch (error: any) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 // Create a new subject
 export const createNewSubject = async (
   req: Request,
@@ -52,6 +32,7 @@ export const createNewSubject = async (
 
     if (existingSubject) {
       res.status(400).json({ message: "Subject already exists" });
+      return;
     }
 
     const newSubject = new Subject({
@@ -74,33 +55,34 @@ export const updateSubject = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { name, description, color, userId } = req.body;
+    const { name, description, color } = req.body;
 
     // Check if new name conflicts with existing subject
     if (name) {
       const existingSubject = await Subject.findOne({
         name: new RegExp(`^${name}$`, "i"),
-        user: userId,
         _id: { $ne: req.params.id },
       });
 
       if (existingSubject) {
         res.status(400).json({ message: "Subject already exists" });
+        return;
       }
     }
-
     const updatedSubject = await Subject.findOneAndUpdate(
-      { _id: req.params.id, user: userId },
+      { _id: req.params.id },
       { name, description, color },
       { new: true, runValidators: true }
     );
 
     if (!updatedSubject) {
       res.status(404).json({ message: "Subject not found" });
+      return;
     }
 
     res.json(updatedSubject);
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };

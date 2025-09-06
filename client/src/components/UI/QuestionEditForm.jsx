@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { questionTypes, subjects } from "../../Utils";
+import { questionTypes } from "../../Utils";
 import useQuestion from "../../hooks/ussQuistion";
+import useSubject from "../../hooks/useSubject";
 
 const QuestionEditForm = ({ question, onClose, onUpdate }) => {
   const { updateQuestion } = useQuestion();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const { subjects, fetchSubjects } = useSubject();
   const [formData, setFormData] = useState({
     type: "multiple_choice",
     subject: "",
@@ -16,7 +18,9 @@ const QuestionEditForm = ({ question, onClose, onUpdate }) => {
     correctAnswer: "",
     explanation: "",
   });
-
+  useEffect(() => {
+    fetchSubjects();
+  }, []);
   useEffect(() => {
     setFormData({
       type: question.type,

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useQuestion from "../../hooks/ussQuistion";
-import { useAuth } from "../../hooks/useAuth";
-import { questionTypes, subjects } from "../../Utils";
+import useAuth from "../../hooks/useAuth";
+import { questionTypes } from "../../Utils";
+import useSubject from "../../hooks/useSubject";
 
 const QuestionGenerator = ({ onQuestionsGenerated }) => {
   const { generateQuestions, loading } = useQuestion();
+  const { subjects, fetchSubjects } = useSubject();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     subject: "",
@@ -29,7 +31,9 @@ const QuestionGenerator = ({ onQuestionsGenerated }) => {
       alert(result.error || "Failed to generate questions");
     }
   };
-
+  useEffect(() => {
+    fetchSubjects();
+  }, []);
   return (
     <div className="card bg-base-100 shadow">
       <div className="card-body">
@@ -50,8 +54,8 @@ const QuestionGenerator = ({ onQuestionsGenerated }) => {
             >
               <option value="">Select a subject</option>
               {subjects.map((subject) => (
-                <option key={subject} value={subject}>
-                  {subject}
+                <option key={subject._id} value={subject.name}>
+                  {subject.name}
                 </option>
               ))}
             </select>

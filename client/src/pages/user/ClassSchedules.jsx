@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useClass } from "../../hooks/useClass";
+import useClass from "../../hooks/useClass";
 import ClassForm from "../../components/UI/ClassForm";
 import { days, formatTime, timeSlots } from "../../Utils";
 import ClassDetails from "../../components/UI/ClassDetails";

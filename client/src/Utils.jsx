@@ -111,19 +111,6 @@ export const getTimeFilterLabel = (timeFilter) => {
   }
 };
 
-// Subjects
-export const subjects = [
-  "Mathematics",
-  "Science",
-  "History",
-  "English",
-  "Computer Science",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "Geography",
-  "Economics",
-];
 // Question Types
 export const questionTypes = [
   { value: "multiple_choice", label: "Multiple Choice" },
