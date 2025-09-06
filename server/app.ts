@@ -9,6 +9,7 @@ import classRouter from "./Routes/Class.js";
 import budgetRouter from "./Routes/Budget.js";
 import questionRouter from "./Routes/Question.js";
 import subjectRouter from "./Routes/Subject.js";
+import instructorRoute from "./Routes/Instructor.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
@@ -39,6 +40,7 @@ app.use("/api/class", classRouter);
 app.use("/api/budget", budgetRouter);
 app.use("/api/question", questionRouter);
 app.use("/api/subject", subjectRouter);
+app.use("/api/instructor", instructorRoute);
 
 // Start the server
 app.listen(PORT, () => {
