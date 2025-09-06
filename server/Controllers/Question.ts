@@ -198,7 +198,7 @@ export const updateQuestion = async (
 };
 
 // Delete a question
-export const deletedQuestion = async (
+export const deleteQuestion = async (
   req: Request,
   res: Response
 ): Promise<void> => {

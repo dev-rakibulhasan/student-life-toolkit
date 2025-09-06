@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   createCustomQuestion,
-  deletedQuestion,
+  deleteQuestion,
   generatedQuestionsByAi,
   getAllQuestions,
   updateQuestion,
@@ -13,6 +13,6 @@ questionRouter.get("/all", getAllQuestions);
 questionRouter.post("/generate-by-ai", generatedQuestionsByAi);
 questionRouter.post("/create-custom", createCustomQuestion);
 questionRouter.put("/update/:id", updateQuestion);
-questionRouter.delete("/delete/:id", deletedQuestion);
+questionRouter.delete("/delete/:id", deleteQuestion);
 
 export default questionRouter;
