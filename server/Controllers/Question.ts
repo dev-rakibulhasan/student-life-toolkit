@@ -68,11 +68,13 @@ export const generatedQuestionsByAi = async (
 
     res.json(savedQuestions);
   } catch (error) {
+    console.log(process.env.OPENAI_API_KEY);
     console.error("Error generating questions:", error);
     res.status(500).json({ message: "Error generating questions" });
   }
 };
 
+// Get questions
 // Get user's generated questions
 export const getAllQuestions = async (
   req: Request,
@@ -80,16 +82,33 @@ export const getAllQuestions = async (
 ): Promise<void> => {
   try {
     const { subject, topic, difficulty, type, userId } = req.query;
+
     const filter: any = { user: userId };
 
-    if (subject) filter.subject = new RegExp(subject as string, "i");
-    if (topic) filter.topic = new RegExp(topic as string, "i");
-    if (difficulty) filter.difficulty = difficulty;
-    if (type) filter.type = type;
+    // Handle subject filter (only if provided and not "All")
+    if (subject && subject !== "All" && subject !== "") {
+      filter.subject = new RegExp(subject as string, "i");
+    }
+
+    // Handle topic filter (only if provided and not "All")
+    if (topic && topic !== "All" && topic !== "") {
+      filter.topic = new RegExp(topic as string, "i");
+    }
+
+    // Handle difficulty filter (only if provided and not "All")
+    if (difficulty && difficulty !== "All" && difficulty !== "") {
+      filter.difficulty = difficulty;
+    }
+
+    // Handle type filter (only if provided and not "All")
+    if (type && type !== "All" && type !== "") {
+      filter.type = type;
+    }
 
     const questions = await Question.find(filter).sort({ createdAt: -1 });
     res.json(questions);
   } catch (error: any) {
+    console.error("Error fetching questions:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -127,6 +146,7 @@ export const createCustomQuestion = async (
     const savedQuestion = await newQuestion.save();
     res.json(savedQuestion);
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };

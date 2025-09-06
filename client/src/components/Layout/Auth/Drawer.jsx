@@ -73,7 +73,7 @@ const Drawer = ({ children }) => {
     },
     {
       name: "Manage Questions",
-      path: `/manage-questions/${user._id}`,
+      path: `/manage-questions`,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

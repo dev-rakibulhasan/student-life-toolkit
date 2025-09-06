@@ -5,13 +5,16 @@ import App from "./App.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { ClassProvider } from "./contexts/ClassContext.jsx";
 import { BudgetProvider } from "./contexts/BudgetContext.jsx";
+import { QuestionProvider } from "./contexts/QuestionContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <ClassProvider>
         <BudgetProvider>
-          <App />
+          <QuestionProvider>
+            <App />
+          </QuestionProvider>
         </BudgetProvider>
       </ClassProvider>
     </AuthProvider>

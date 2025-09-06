@@ -7,6 +7,8 @@ import PublicLayout from "./components/Layout/Public/PublicLayout";
 import NotFound from "./pages/partial/NotFound";
 import ClassSchedules from "./pages/user/ClassSchedules";
 import BudgetTracker from "./pages/user/BudgetTracker";
+import ManageQuestions from "./pages/user/ManageQuestions";
+import ToastProvider from "./components/UI/ToastProvider";
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
         <Route element={<AuthenticatedLayout />}>
           <Route path="/class-schedules" element={<ClassSchedules />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
+          <Route path="/manage-questions" element={<ManageQuestions />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastProvider />
     </Router>
   );
 }

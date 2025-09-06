@@ -110,3 +110,23 @@ export const getTimeFilterLabel = (timeFilter) => {
       return "Lifetime";
   }
 };
+
+// Subjects
+export const subjects = [
+  "Mathematics",
+  "Science",
+  "History",
+  "English",
+  "Computer Science",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "Geography",
+  "Economics",
+];
+// Question Types
+export const questionTypes = [
+  { value: "multiple_choice", label: "Multiple Choice" },
+  { value: "true_false", label: "True/False" },
+  { value: "short_answer", label: "Short Answer" },
+];
