@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const QuestionDisplay = ({
   questions,
-  onDelete,
   onAnswerSubmit,
   userAnswers,
   setUserAnswers,
@@ -262,17 +261,6 @@ const QuestionDisplay = ({
             {currentIndex === questions.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
-
-        {onDelete && (
-          <div className="mt-4">
-            <button
-              className="btn btn-sm btn-error"
-              onClick={() => onDelete(currentQuestion._id)}
-            >
-              Delete Question
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

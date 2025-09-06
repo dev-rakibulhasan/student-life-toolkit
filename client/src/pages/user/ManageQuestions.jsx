@@ -328,6 +328,7 @@ const ExamQAGenerator = () => {
           <QuestionLibrary
             filteredQuestions={filteredQuestions}
             questions={questions}
+            onDelete={handleDeleteQuestion}
           />
         </div>
       )}
@@ -337,6 +338,7 @@ const ExamQAGenerator = () => {
           <QuestionLibrary
             filteredQuestions={filteredQuestions}
             questions={questions}
+            onDelete={handleDeleteQuestion}
           />
         </div>
       )}
@@ -347,7 +349,6 @@ const ExamQAGenerator = () => {
               questions={
                 currentQuestions.length > 0 ? currentQuestions : questions
               }
-              onDelete={handleDeleteQuestion}
               onAnswerSubmit={handleAnswerSubmit}
               userAnswers={userAnswers}
               setUserAnswers={setUserAnswers}

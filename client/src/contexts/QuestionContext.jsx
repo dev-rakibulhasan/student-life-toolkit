@@ -97,7 +97,7 @@ export const QuestionProvider = ({ children }) => {
   };
   const updateQuestion = async (id, questionData) => {
     try {
-      const res = await api.put(`/question/update${id}`, questionData, {
+      const res = await api.put(`/question/update/${id}`, questionData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "UPDATE_QUESTION", payload: res.data });
@@ -113,7 +113,7 @@ export const QuestionProvider = ({ children }) => {
 
   const deleteQuestion = async (id) => {
     try {
-      await api.delete(`/question/${id}`, {
+      await api.delete(`/question/delete/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       dispatch({ type: "DELETE_QUESTION", payload: id });
