@@ -41,9 +41,7 @@ export const SubjectProvider = ({ children }) => {
   const fetchSubjects = async () => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const res = await api.get(`/subject/all?userId=${user._id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.get(`/subject/all?userId=${user._id}`);
       dispatch({ type: "SET_SUBJECTS", payload: res.data });
       return { success: true, data: res.data };
     } catch (error) {
@@ -56,9 +54,7 @@ export const SubjectProvider = ({ children }) => {
 
   const createSubject = async (subjectData) => {
     try {
-      const res = await api.post("/subject/add", subjectData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.post("/subject/add", subjectData);
       dispatch({ type: "ADD_SUBJECT", payload: res.data });
       return { success: true, data: res.data };
     } catch (error) {
@@ -69,9 +65,7 @@ export const SubjectProvider = ({ children }) => {
 
   const updateSubject = async (id, subjectData) => {
     try {
-      const res = await api.put(`/subject/update/${id}`, subjectData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.put(`/subject/update/${id}`, subjectData);
       console.log(res);
       dispatch({ type: "UPDATE_SUBJECT", payload: res.data });
       return { success: true, data: res.data };
@@ -83,9 +77,7 @@ export const SubjectProvider = ({ children }) => {
 
   const deleteSubject = async (id) => {
     try {
-      await api.delete(`/subject/delete/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      await api.delete(`/subject/delete/${id}`);
       dispatch({ type: "DELETE_SUBJECT", payload: id });
       return { success: true };
     } catch (error) {

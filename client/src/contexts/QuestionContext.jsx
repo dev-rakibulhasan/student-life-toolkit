@@ -45,9 +45,7 @@ export const QuestionProvider = ({ children }) => {
   const generateQuestions = async (params) => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const res = await api.post("/question/generate-by-ai", params, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.post("/question/generate-by-ai", params);
       dispatch({ type: "ADD_QUESTIONS", payload: res.data });
       return { success: true, questions: res.data };
     } catch (error) {
@@ -62,10 +60,7 @@ export const QuestionProvider = ({ children }) => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const res = await api.get(
-        `/question/all?${queryParams}&userId=${user._id}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        `/question/all?${queryParams}&userId=${user._id}`
       );
       dispatch({ type: "SET_QUESTIONS", payload: res.data });
     } catch (error) {
@@ -75,9 +70,7 @@ export const QuestionProvider = ({ children }) => {
 
   const addQuestion = async (questionData) => {
     try {
-      const res = await api.post("/question/create-custom", questionData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.post("/question/create-custom", questionData);
       dispatch({ type: "ADD_QUESTION", payload: res.data });
       return { success: true };
     } catch (error) {
@@ -87,9 +80,7 @@ export const QuestionProvider = ({ children }) => {
   };
   const updateQuestion = async (id, questionData) => {
     try {
-      const res = await api.put(`/question/update/${id}`, questionData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.put(`/question/update/${id}`, questionData);
       dispatch({ type: "UPDATE_QUESTION", payload: res.data });
       return { success: true, question: res.data };
     } catch (error) {
@@ -103,9 +94,7 @@ export const QuestionProvider = ({ children }) => {
 
   const deleteQuestion = async (id) => {
     try {
-      await api.delete(`/question/delete/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      await api.delete(`/question/delete/${id}`);
       dispatch({ type: "DELETE_QUESTION", payload: id });
       return { success: true };
     } catch (error) {

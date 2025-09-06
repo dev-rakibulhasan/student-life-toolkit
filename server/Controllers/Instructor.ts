@@ -72,6 +72,7 @@ export const addNewInstructor = async (
     const savedInstructor = await newInstructor.save();
     res.status(201).json(savedInstructor);
   } catch (error: any) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };

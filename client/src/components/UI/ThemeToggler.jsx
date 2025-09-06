@@ -2,8 +2,8 @@ import React from "react";
 
 const ThemeToggler = () => {
   return (
-    <label class="toggle text-base-content">
-      <input type="checkbox" value="dracula" class="theme-controller" />
+    <label className="toggle text-base-content">
+      <input type="checkbox" value="dracula" className="theme-controller" />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -10,6 +10,7 @@ import BudgetTracker from "./pages/user/BudgetTracker";
 import ManageQuestions from "./pages/user/ManageQuestions";
 import ToastProvider from "./components/UI/ToastProvider";
 import MySubjects from "./pages/user/MySubjects";
+import MyInstructors from "./pages/user/MyInstructors";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/budget-tracker" element={<BudgetTracker />} />
           <Route path="/manage-questions" element={<ManageQuestions />} />
           <Route path="/my-subjects" element={<MySubjects />} />
+          <Route path="/my-instructors" element={<MyInstructors />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

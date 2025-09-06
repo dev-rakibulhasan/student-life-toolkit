@@ -40,9 +40,7 @@ export const BudgetProvider = ({ children }) => {
 
   const fetchBudgetItems = async () => {
     try {
-      const res = await api.get(`/budget/all?userId=${user._id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.get(`/budget/all?userId=${user._id}`);
       dispatch({ type: "SET_BUDGET_ITEMS", payload: res.data });
     } catch (error) {
       console.error("Error fetching budget items:", error);
@@ -51,9 +49,7 @@ export const BudgetProvider = ({ children }) => {
 
   const fetchBudgetSummary = async () => {
     try {
-      const res = await api.get(`/budget/summary?userId=${user._id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.get(`/budget/summary?userId=${user._id}`);
       dispatch({ type: "SET_SUMMARY", payload: res.data });
     } catch (error) {
       console.error("Error fetching budget summary:", error);
@@ -62,9 +58,7 @@ export const BudgetProvider = ({ children }) => {
 
   const addBudgetItem = async (budgetData) => {
     try {
-      const res = await api.post("/budget/add", budgetData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.post("/budget/add", budgetData);
       dispatch({ type: "ADD_BUDGET_ITEM", payload: res.data });
       await fetchBudgetSummary();
       return { success: true };
@@ -76,9 +70,7 @@ export const BudgetProvider = ({ children }) => {
 
   const updateBudgetItem = async (id, budgetData) => {
     try {
-      const res = await api.put(`/budget/update/${id}`, budgetData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.put(`/budget/update/${id}`, budgetData);
       dispatch({ type: "UPDATE_BUDGET_ITEM", payload: res.data });
       await fetchBudgetSummary();
       return { success: true };
@@ -90,9 +82,7 @@ export const BudgetProvider = ({ children }) => {
 
   const deleteBudgetItem = async (id) => {
     try {
-      await api.delete(`/budget/delete/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      await api.delete(`/budget/delete/${id}`);
       dispatch({ type: "DELETE_BUDGET_ITEM", payload: id });
       await fetchBudgetSummary();
       return { success: true };

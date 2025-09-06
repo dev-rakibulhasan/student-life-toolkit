@@ -33,9 +33,7 @@ export const ClassProvider = ({ children }) => {
 
   const fetchClasses = async () => {
     try {
-      const res = await api.get(`/class/all?userId=${user._id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.get(`/class/all?userId=${user._id}`);
       dispatch({ type: "SET_CLASSES", payload: res.data });
     } catch (error) {
       console.error("Error fetching classes:", error);
@@ -44,9 +42,7 @@ export const ClassProvider = ({ children }) => {
 
   const addClass = async (classData) => {
     try {
-      const res = await api.post("/class/add", classData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.post("/class/add", classData);
       dispatch({ type: "ADD_CLASS", payload: res.data });
       return { success: true };
     } catch (error) {
@@ -57,9 +53,7 @@ export const ClassProvider = ({ children }) => {
 
   const updateClass = async (id, classData) => {
     try {
-      const res = await api.put(`/class/update/${id}`, classData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await api.put(`/class/update/${id}`, classData);
       dispatch({ type: "UPDATE_CLASS", payload: res.data });
       return { success: true };
     } catch (error) {
@@ -70,9 +64,7 @@ export const ClassProvider = ({ children }) => {
 
   const deleteClass = async (id) => {
     try {
-      await api.delete(`/class/delete/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      await api.delete(`/class/delete/${id}`);
       dispatch({ type: "DELETE_CLASS", payload: id });
       return { success: true };
     } catch (error) {
