@@ -18,7 +18,6 @@ const ClassSchedules = () => {
   }, []);
 
   useEffect(() => {
-    // Calculate next class whenever classes change
     calculateNextClass();
   }, [classes]);
 
@@ -58,11 +57,9 @@ const ClassSchedules = () => {
       return a.timeInMinutes - b.timeInMinutes;
     });
 
-    // Find the next class
     let nextClassFound = null;
     let displayDay = "";
 
-    // First, check today's remaining classes
     const todaysClasses = classList.filter(
       (cls) => cls.day === currentDay && cls.timeInMinutes > currentTime
     );
@@ -70,7 +67,6 @@ const ClassSchedules = () => {
       nextClassFound = todaysClasses[0];
       displayDay = "Today";
     } else {
-      // If no more classes today, find the first class of the next days
       const currentDayIndex = days.indexOf(currentDay);
       const futureClasses = classList.filter(
         (cls) => cls.dayIndex > currentDayIndex
@@ -78,14 +74,12 @@ const ClassSchedules = () => {
 
       if (futureClasses.length > 0) {
         nextClassFound = futureClasses[0];
-        // Check if it's tomorrow
         const tomorrowIndex = (currentDayIndex + 1) % 7;
         displayDay =
           nextClassFound.dayIndex === tomorrowIndex
             ? "Tomorrow"
             : nextClassFound.day;
       } else {
-        // If no classes in the remaining week, check from the beginning of the week
         const nextWeekClasses = classList.filter((cls) => cls.dayIndex >= 0);
         nextClassFound = nextWeekClasses[0];
         displayDay = nextClassFound.day;
