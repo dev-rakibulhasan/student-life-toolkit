@@ -174,8 +174,8 @@ const BudgetTracker = () => {
       </div>
 
       {/* Budget Items List */}
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+      <div className="h-[500px] overflow-x-auto">
+        <table className="table table-zebra w-full table-pin-rows">
           <thead>
             <tr>
               <th>Date</th>

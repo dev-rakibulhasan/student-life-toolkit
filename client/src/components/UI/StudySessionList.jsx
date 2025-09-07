@@ -53,17 +53,6 @@ const StudySessionList = ({
     );
   }
 
-  // Format date for display
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   // Format duration for display
   const formatDuration = (minutes) => {
     const hours = Math.floor(minutes / 60);
@@ -208,8 +197,8 @@ const StudySessionList = ({
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="table table-zebra">
+        <div className="h-[500px] overflow-x-auto">
+          <table className="table table-zebra w-full table-pin-rows">
             <thead>
               <tr>
                 <th>

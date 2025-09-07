@@ -29,7 +29,7 @@ function App() {
         <Route element={<AuthenticatedLayout />}>
           <Route path="/class-schedules" element={<ClassSchedules />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
-          <Route path="/manage-questions" element={<ManageQuestions />} />
+          <Route path="/questio-nanager" element={<ManageQuestions />} />
           <Route path="/study-planner" element={<StudyPlanner />} />
           <Route path="/time-tracker" element={<TimeTracker />} />
           <Route path="/my-subjects" element={<MySubjects />} />

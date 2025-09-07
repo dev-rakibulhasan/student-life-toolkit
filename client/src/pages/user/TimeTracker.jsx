@@ -131,7 +131,6 @@ const TimeTracker = () => {
       />
 
       {/* Study Time Chart */}
-      {/* Study Time Chart */}
       <StudyTimeChart
         chartData={chartData.chartData}
         subjects={chartData.subjects}

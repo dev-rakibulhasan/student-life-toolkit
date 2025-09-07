@@ -10,14 +10,90 @@ const ClassSchedules = () => {
   const [editClass, setEditClass] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [nextClass, setNextClass] = useState(null);
+  const [nextClassDisplayDay, setNextClassDisplayDay] = useState("");
 
   useEffect(() => {
     fetchClasses();
   }, []);
 
+  useEffect(() => {
+    // Calculate next class whenever classes change
+    calculateNextClass();
+  }, [classes]);
+
   // Check if a time slot is already booked
   const isTimeSlotBooked = (day, time) => {
     return classes.some((cls) => cls.day === day && cls.time === time);
+  };
+
+  // Calculate the next upcoming class
+  const calculateNextClass = () => {
+    if (!classes.length) {
+      setNextClass(null);
+      setNextClassDisplayDay("");
+      return;
+    }
+
+    const now = new Date();
+    const currentDay = now.toLocaleDateString("en-US", { weekday: "long" });
+    const currentTime = now.getHours() * 60 + now.getMinutes(); // Convert to minutes
+
+    // Convert day and time to a comparable format
+    const classList = classes.map((cls) => {
+      const dayIndex = days.indexOf(cls.day);
+      const [hours, minutes] = cls.time.split(":").map(Number);
+      const timeInMinutes = hours * 60 + minutes;
+
+      return {
+        ...cls,
+        dayIndex,
+        timeInMinutes,
+      };
+    });
+
+    // Sort classes by day and time
+    classList.sort((a, b) => {
+      if (a.dayIndex !== b.dayIndex) return a.dayIndex - b.dayIndex;
+      return a.timeInMinutes - b.timeInMinutes;
+    });
+
+    // Find the next class
+    let nextClassFound = null;
+    let displayDay = "";
+
+    // First, check today's remaining classes
+    const todaysClasses = classList.filter(
+      (cls) => cls.day === currentDay && cls.timeInMinutes > currentTime
+    );
+    if (todaysClasses.length > 0) {
+      nextClassFound = todaysClasses[0];
+      displayDay = "Today";
+    } else {
+      // If no more classes today, find the first class of the next days
+      const currentDayIndex = days.indexOf(currentDay);
+      const futureClasses = classList.filter(
+        (cls) => cls.dayIndex > currentDayIndex
+      );
+
+      if (futureClasses.length > 0) {
+        nextClassFound = futureClasses[0];
+        // Check if it's tomorrow
+        const tomorrowIndex = (currentDayIndex + 1) % 7;
+        displayDay =
+          nextClassFound.dayIndex === tomorrowIndex
+            ? "Tomorrow"
+            : nextClassFound.day;
+      } else {
+        // If no classes in the remaining week, check from the beginning of the week
+        const nextWeekClasses = classList.filter((cls) => cls.dayIndex >= 0);
+        nextClassFound = nextWeekClasses[0];
+        displayDay = nextClassFound.day;
+      }
+    }
+
+    setNextClass(nextClassFound);
+    setNextClassDisplayDay(displayDay);
   };
 
   const handleEdit = (cls) => {
@@ -54,6 +130,29 @@ const ClassSchedules = () => {
           Add Class
         </button>
       </div>
+
+      {/* Next Class Banner */}
+      {nextClass && (
+        <div role="alert" className="alert alert-info">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="h-6 w-6 shrink-0 stroke-current"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>
+            Next class: <strong>{nextClass.subject}</strong> on{" "}
+            {nextClassDisplayDay} at {formatTime(nextClass.time)}
+          </span>
+        </div>
+      )}
 
       {showForm && (
         <ClassForm

@@ -91,7 +91,7 @@ const QuestionDisplay = ({
               {
                 questions.filter((q, i) => userAnswers[i] === q.correctAnswer)
                   .length
-              }
+              }{" "}
               out of {questions.length} questions correct
             </p>
           </div>

@@ -169,7 +169,6 @@ export const prepareStudyTimeChartData = (
       }
     }
   });
-  console.log(chartData);
   return {
     chartData,
     subjects: allSubjects,
@@ -275,17 +274,7 @@ const getDatesInRange = (startDate, endDate) => {
 const formatChartDate = (date, timeFilter) => {
   switch (timeFilter) {
     case "today":
-      return date.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
     case "yesterday":
-      return date.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
     case "thisWeek":
       return date.toLocaleDateString("en-US", {
         weekday: "short",
