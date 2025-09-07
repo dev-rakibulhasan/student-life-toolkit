@@ -9,6 +9,7 @@ import { QuestionProvider } from "./contexts/QuestionContext.jsx";
 import { SubjectProvider } from "./contexts/SubjectContext.jsx";
 import { InstructorProvider } from "./contexts/InstructorContext.jsx";
 import { StudyTaskProvider } from "./contexts/StudyTaskContext.jsx";
+import { StudySessionProvider } from "./contexts/StudySessionContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,7 +20,9 @@ createRoot(document.getElementById("root")).render(
             <SubjectProvider>
               <InstructorProvider>
                 <StudyTaskProvider>
-                  <App />
+                  <StudySessionProvider>
+                    <App />
+                  </StudySessionProvider>
                 </StudyTaskProvider>
               </InstructorProvider>
             </SubjectProvider>

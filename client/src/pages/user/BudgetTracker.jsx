@@ -207,7 +207,7 @@ const BudgetTracker = () => {
                       item.type === "income" ? "text-success" : "text-error"
                     }`}
                   >
-                    ${item.amount.toFixed(2)}
+                    ৳{item.amount.toFixed(2)}
                   </td>
                   <td>
                     <div className="flex gap-2">

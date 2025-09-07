@@ -11,6 +11,7 @@ import questionRouter from "./Routes/Question.js";
 import subjectRouter from "./Routes/Subject.js";
 import studyTaskRouter from "./Routes/StudyTask.js";
 import instructorRouter from "./Routes/Instructor.js";
+import studySessionRouter from "./Routes/StudySession.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
@@ -43,6 +44,7 @@ app.use("/api/question", questionRouter);
 app.use("/api/subject", subjectRouter);
 app.use("/api/instructor", instructorRouter);
 app.use("/api/study-task", studyTaskRouter);
+app.use("/api/study-session", studySessionRouter);
 
 // Start the server
 app.listen(PORT, () => {

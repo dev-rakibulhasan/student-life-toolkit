@@ -35,14 +35,14 @@ const BudgetCharts = ({ summary, timePeriod = "Lifetime" }) => {
         <div className="stat">
           <div className="stat-title">Total Income ({timePeriod})</div>
           <div className="stat-value text-success">
-            ${totalIncome.toFixed(2)}
+            ৳{totalIncome.toFixed(2)}
           </div>
         </div>
 
         <div className="stat">
           <div className="stat-title">Total Expenses ({timePeriod})</div>
           <div className="stat-value text-error">
-            ${totalExpense.toFixed(2)}
+            ৳{totalExpense.toFixed(2)}
           </div>
         </div>
 
@@ -53,7 +53,7 @@ const BudgetCharts = ({ summary, timePeriod = "Lifetime" }) => {
               balance > 0 ? "text-success" : "text-error"
             }`}
           >
-            ${balance.toFixed(2)}
+            ৳{balance.toFixed(2)}
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ const BudgetCharts = ({ summary, timePeriod = "Lifetime" }) => {
                     <div className="flex justify-between">
                       <span className="font-medium">{item.name}</span>
                       <span>
-                        ${item.value.toFixed(2)} ({item.percentage.toFixed(1)}%)
+                        ৳{item.value.toFixed(2)} ({item.percentage.toFixed(1)}%)
                       </span>
                     </div>
                     <progress
@@ -97,7 +97,7 @@ const BudgetCharts = ({ summary, timePeriod = "Lifetime" }) => {
                     <div className="flex justify-between">
                       <span className="font-medium">{item.name}</span>
                       <span>
-                        ${item.value.toFixed(2)} ({item.percentage.toFixed(1)}%)
+                        ৳{item.value.toFixed(2)} ({item.percentage.toFixed(1)}%)
                       </span>
                     </div>
                     <progress

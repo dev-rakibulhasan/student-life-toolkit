@@ -6,40 +6,33 @@ export interface IStudySession extends Document {
   date: Date;
   notes: string;
   user: ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
-const studySessionSchema: Schema<IStudySession> = new Schema<IStudySession>(
-  {
-    subject: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    duration: {
-      type: Number,
-      required: true,
-      min: 1,
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
-    notes: {
-      type: String,
-      trim: true,
-    },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+const studySessionSchema: Schema<IStudySession> = new Schema<IStudySession>({
+  subject: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  duration: {
+    type: Number,
+    required: true,
+    min: 1,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  notes: {
+    type: String,
+    trim: true,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+});
 
 // Index for better query performance
 studySessionSchema.index({ user: 1, date: 1 });
