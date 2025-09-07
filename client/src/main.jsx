@@ -8,6 +8,7 @@ import { BudgetProvider } from "./contexts/BudgetContext.jsx";
 import { QuestionProvider } from "./contexts/QuestionContext.jsx";
 import { SubjectProvider } from "./contexts/SubjectContext.jsx";
 import { InstructorProvider } from "./contexts/InstructorContext.jsx";
+import { StudyTaskProvider } from "./contexts/StudyTaskContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,7 +18,9 @@ createRoot(document.getElementById("root")).render(
           <QuestionProvider>
             <SubjectProvider>
               <InstructorProvider>
-                <App />
+                <StudyTaskProvider>
+                  <App />
+                </StudyTaskProvider>
               </InstructorProvider>
             </SubjectProvider>
           </QuestionProvider>

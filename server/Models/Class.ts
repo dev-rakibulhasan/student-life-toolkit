@@ -32,6 +32,7 @@ const classSchema: Schema<IClass> = new Schema<IClass>(
         "Tuesday",
         "Wednesday",
         "Thursday",
+        "Friday",
       ],
     },
     instructor: {

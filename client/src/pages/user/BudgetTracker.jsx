@@ -3,6 +3,7 @@ import useBudget from "../../hooks/useBudget";
 import BudgetCharts from "../../components/UI/BudgetCharts";
 import BudgetForm from "../../components/UI/BudgetForm";
 import { filterBudgetByTimePeriod, getTimeFilterLabel } from "../../Utils";
+import moment from "moment";
 
 const BudgetTracker = () => {
   const {
@@ -189,7 +190,7 @@ const BudgetTracker = () => {
             {filteredItems.length > 0 ? (
               filteredItems.map((item) => (
                 <tr key={item._id}>
-                  <td>{new Date(item.date).toLocaleDateString()}</td>
+                  <td>{moment(item.date).format("ll")}</td>
                   <td>
                     <span
                       className={`badge ${

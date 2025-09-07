@@ -11,6 +11,7 @@ import ManageQuestions from "./pages/user/ManageQuestions";
 import ToastProvider from "./components/UI/ToastProvider";
 import MySubjects from "./pages/user/MySubjects";
 import MyInstructors from "./pages/user/MyInstructors";
+import StudyPlanner from "./pages/user/StudyPlanner";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/class-schedules" element={<ClassSchedules />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
           <Route path="/manage-questions" element={<ManageQuestions />} />
+          <Route path="/study-planner" element={<StudyPlanner />} />
           <Route path="/my-subjects" element={<MySubjects />} />
           <Route path="/my-instructors" element={<MyInstructors />} />
         </Route>

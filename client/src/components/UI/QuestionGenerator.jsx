@@ -37,7 +37,7 @@ const QuestionGenerator = ({ onQuestionsGenerated }) => {
   return (
     <div className="card bg-base-100 shadow">
       <div className="card-body">
-        <h2 className="card-title">Generate Practice Questions</h2>
+        <h2 className="card-title">Generate Questions By AI</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">

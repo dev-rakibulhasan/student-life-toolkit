@@ -53,7 +53,6 @@ const BudgetForm = ({ editItem = null, onClose }) => {
       : await addBudgetItem(budgetData);
 
     setLoading(false);
-    console.log(result);
     if (result.success) {
       onClose();
     } else {

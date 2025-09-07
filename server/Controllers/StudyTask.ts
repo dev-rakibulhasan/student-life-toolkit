@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import StudyTask from "../Models/StudyTask.js";
+import mongoose from "mongoose";
 
 // Get all study tasks for a user with optional filters
 export const getAllStudyTasks = async (
@@ -54,7 +55,7 @@ export const getStudyTaskStates = async (
     });
 
     const priorityStats = await StudyTask.aggregate([
-      { $match: { user } },
+      { $match: { user: new mongoose.Types.ObjectId(user as string) } },
       {
         $group: {
           _id: "$priority",
@@ -65,7 +66,6 @@ export const getStudyTaskStates = async (
         },
       },
     ]);
-
     res.json({
       totalTasks,
       completedTasks,

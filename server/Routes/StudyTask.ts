@@ -11,7 +11,7 @@ import {
 const studyTaskRouter = Router();
 
 studyTaskRouter.get("/all", getAllStudyTasks);
-studyTaskRouter.post("/stats", getStudyTaskStates);
+studyTaskRouter.get("/stats", getStudyTaskStates);
 studyTaskRouter.post("/add", addNewStudyTask);
 studyTaskRouter.put("/update/:id", updateStudyTask);
 studyTaskRouter.patch("/toggle/:id", toggleTaskCompletion);

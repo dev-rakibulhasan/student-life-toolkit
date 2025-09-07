@@ -35,6 +35,7 @@ export const days = [
   "Tuesday",
   "Wednesday",
   "Thursday",
+  "Friday",
 ];
 // Filter items by time period
 export const filterBudgetByTimePeriod = (items, timeFilter) => {
