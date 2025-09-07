@@ -69,7 +69,7 @@ const BudgetForm = ({ editItem = null, onClose }) => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-control mb-3">
-            <label className="label">
+            <label className="label mr-2">
               <span className="label-text">Type</span>
             </label>
             <select
@@ -85,7 +85,7 @@ const BudgetForm = ({ editItem = null, onClose }) => {
           </div>
 
           <div className="form-control mb-3">
-            <label className="label">
+            <label className="label mr-2">
               <span className="label-text">Category</span>
             </label>
             <select
@@ -111,7 +111,7 @@ const BudgetForm = ({ editItem = null, onClose }) => {
           </div>
 
           <div className="form-control mb-3">
-            <label className="label">
+            <label className="label mr-2">
               <span className="label-text">Amount</span>
             </label>
             <input
@@ -127,7 +127,7 @@ const BudgetForm = ({ editItem = null, onClose }) => {
           </div>
 
           <div className="form-control mb-3">
-            <label className="label">
+            <label className="label mr-2">
               <span className="label-text">Description</span>
             </label>
             <input
@@ -141,7 +141,7 @@ const BudgetForm = ({ editItem = null, onClose }) => {
           </div>
 
           <div className="form-control mb-4">
-            <label className="label">
+            <label className="label mr-2">
               <span className="label-text">Date</span>
             </label>
             <input

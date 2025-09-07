@@ -50,11 +50,15 @@ const StudyTaskForm = ({ task = null, onClose, onSuccess }) => {
 
   const addTimeSlot = () => {
     if (timeSlot.startTime && timeSlot.endTime) {
-      setFormData((prev) => ({
-        ...prev,
-        timeSlots: [...prev.timeSlots, { ...timeSlot }],
-      }));
-      setTimeSlot({ day: "Saturday", startTime: "09:00", endTime: "10:00" });
+      if (parseInt(timeSlot.startTime) >= parseInt(timeSlot.endTime)) {
+        toast.error("Start time should not be less than or equal End time.");
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          timeSlots: [...prev.timeSlots, { ...timeSlot }],
+        }));
+        setTimeSlot({ day: "Saturday", startTime: "09:00", endTime: "10:00" });
+      }
     }
   };
 
