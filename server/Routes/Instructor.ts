@@ -6,11 +6,11 @@ import {
   updateInstructor,
 } from "../Controllers/Instructor.js";
 
-const instructorRoute = Router();
+const instructorRouter = Router();
 
-instructorRoute.get("/all", getAllInstructors);
-instructorRoute.post("/add", addNewInstructor);
-instructorRoute.put("/update/:id", updateInstructor);
-instructorRoute.delete("/delete/:id", deleteInstructor);
+instructorRouter.get("/all", getAllInstructors);
+instructorRouter.post("/add", addNewInstructor);
+instructorRouter.put("/update/:id", updateInstructor);
+instructorRouter.delete("/delete/:id", deleteInstructor);
 
-export default instructorRoute;
+export default instructorRouter;
