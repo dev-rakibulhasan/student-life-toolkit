@@ -212,7 +212,7 @@ const StudyPlanner = () => {
         isOpen={isOpenDeleteConfModal}
         onClose={closeDeleteConfModal}
         onConfirm={handleDelete}
-        itemName="subject"
+        itemName="task"
         isLoading={isDeleting}
       />
     </div>

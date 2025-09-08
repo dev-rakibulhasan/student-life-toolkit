@@ -39,10 +39,10 @@ const TimeTracker = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Study Time Tracker</h1>
-        <div className="flex gap-2">
-          <span className="badge badge-primary">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">Study Time Tracker</h1>
+        <div className="flex gap-2 w-full sm:w-auto">
+          <span className="badge badge-primary w-full sm:w-auto text-center">
             {getTimeFilterLabel(filters.timeFilter)}
           </span>
         </div>

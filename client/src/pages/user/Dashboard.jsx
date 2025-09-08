@@ -362,7 +362,7 @@ const Dashboard = () => {
                     </tr>
                     <tr>
                       <td>
-                        <span className="badge badge-success">Low</span>
+                        <span className="badge badge-info">Low</span>
                       </td>
                       <td>
                         <span className="text-xl">

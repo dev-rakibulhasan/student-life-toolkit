@@ -66,6 +66,7 @@ export const getStudyTaskStates = async (
         },
       },
     ]);
+
     res.json({
       totalTasks,
       completedTasks,
