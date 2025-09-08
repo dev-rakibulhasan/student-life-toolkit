@@ -62,18 +62,24 @@ const MySubjects = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between flex-wrap items-center mb-6">
-        <h1 className="text-2xl font-bold">Manage Subjects</h1>
-        <input
-          type="text"
-          placeholder="Search by name or description..."
-          className="input input-bordered"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={handleCreateSubject}>
-          Add New Subject
-        </button>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">Manage Subjects</h1>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <input
+            type="text"
+            placeholder="Search by name or description..."
+            className="input input-bordered w-full sm:w-64"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            className="btn btn-primary w-full sm:w-auto"
+            onClick={handleCreateSubject}
+          >
+            Add New Subject
+          </button>
+        </div>
       </div>
       {showForm && (
         <SubjectForm

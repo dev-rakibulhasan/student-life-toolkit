@@ -190,13 +190,14 @@ const ExamQAGenerator = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-wrap justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Manage Questions</h1>
-        <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">Manage Questions</h1>
+
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <button
             className={`btn ${
               view === "generate" ? "btn-primary" : "btn-ghost"
-            }`}
+            } w-full sm:w-auto`}
             onClick={() => setView("generate")}
           >
             Generate Questions
@@ -204,7 +205,7 @@ const ExamQAGenerator = () => {
           <button
             className={`btn ${
               view === "create-manually" ? "btn-primary" : "btn-ghost"
-            }`}
+            } w-full sm:w-auto`}
             onClick={() => setView("create-manually")}
           >
             Create Manually
@@ -212,7 +213,7 @@ const ExamQAGenerator = () => {
           <button
             className={`btn ${
               view === "practice" ? "btn-primary" : "btn-ghost"
-            }`}
+            } w-full sm:w-auto`}
             onClick={() => setView("practice")}
           >
             Practice Mode

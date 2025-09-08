@@ -75,7 +75,7 @@ const MyInstructors = () => {
         {instructor.email && (
           <a
             href={`mailto:${instructor.email}`}
-            className="badge badge-outline badge-info hover:badge-info hover:text-white"
+            className="badge badge-outline badge-info hover:badge-info hover:text-secondary"
             title="Send email"
           >
             📧 {instructor.email}
@@ -84,7 +84,7 @@ const MyInstructors = () => {
         {instructor.phone && (
           <a
             href={`tel:${instructor.phone}`}
-            className="badge badge-outline badge-info hover:badge-info hover:text-white"
+            className="badge badge-outline badge-info hover:badge-info hover:text-secondary"
             title="Call"
           >
             📞 {instructor.phone}
@@ -95,7 +95,7 @@ const MyInstructors = () => {
             href={instructor.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="badge badge-outline badge-info hover:badge-info hover:text-white"
+            className="badge badge-outline badge-info hover:badge-info hover:text-secondary"
             title="Visit website"
           >
             🌐 Website
@@ -107,18 +107,24 @@ const MyInstructors = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between flex-wrap items-center mb-6">
-        <h1 className="text-2xl font-bold">My Instructors</h1>
-        <input
-          type="text"
-          placeholder="Search by name, department, or email..."
-          className="input input-bordered"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={handleCreateInstructor}>
-          Add New Instructor
-        </button>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">My Instructors</h1>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <input
+            type="text"
+            placeholder="Search by name, department, or email..."
+            className="input input-bordered w-full sm:w-64"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            className="btn btn-primary w-full sm:w-auto"
+            onClick={handleCreateInstructor}
+          >
+            Add New Instructor
+          </button>
+        </div>
       </div>
 
       {showForm && (

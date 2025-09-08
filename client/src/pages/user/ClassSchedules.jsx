@@ -138,9 +138,12 @@ const ClassSchedules = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-wrap justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Class Schedules</h1>
-        <button className="btn btn-primary" onClick={() => setShowForm(true)}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">Class Schedules</h1>
+        <button
+          className="btn btn-primary w-full sm:w-auto"
+          onClick={() => setShowForm(true)}
+        >
           Add Class
         </button>
       </div>
