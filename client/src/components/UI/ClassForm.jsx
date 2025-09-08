@@ -15,7 +15,7 @@ const ClassForm = ({ editClass = null, onClose, isTimeSlotBooked }) => {
   const [formData, setFormData] = useState({
     subject: editClass ? editClass.subject : "",
     time: editClass ? editClass.time : "08:00",
-    day: editClass ? editClass.day : "Monday",
+    day: editClass ? editClass.day : "Saturday",
     instructor: editClass ? editClass.instructor : "",
     color: editClass ? editClass.color : "#3B82F6",
     userId: user._id,

@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { getSubjectColor } from "../../Utils";
 
-const StudyTimeChart = ({ chartData, subjects }) => {
+const StudyTimeChart = ({ chartData, subjects, fromDashboad }) => {
   if (
     !chartData ||
     chartData.length === 0 ||
@@ -65,10 +65,13 @@ const StudyTimeChart = ({ chartData, subjects }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow mt-6">
+    <div className={`card bg-base-100 shadow ${!fromDashboad && "mt-6"}`}>
       <div className="card-body">
-        <h2 className="card-title">Study Time Progress</h2>
-
+        {
+          <h2 className="card-title">
+            {fromDashboad ? "This Weeks Study Time" : "Study Time Progress"}
+          </h2>
+        }
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>

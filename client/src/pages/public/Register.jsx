@@ -25,11 +25,9 @@ const Register = () => {
     }
     const result = await register({ name, email, password });
     if (result.success) {
-      setSuccess(result.message);
       sessionStorage.setItem("justLoggedIn", "true");
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);
+      navigate("/dashboard");
+      toast.success(result.message);
     } else {
       setError(result.message);
       setTimeout(() => {

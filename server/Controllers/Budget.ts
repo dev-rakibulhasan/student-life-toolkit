@@ -91,6 +91,7 @@ export const updateBudgetItem = async (
 
     if (!updatedBudget) {
       res.status(404).json({ message: "Budget item not found" });
+      return;
     }
 
     res.json(updatedBudget);
@@ -110,6 +111,7 @@ export const deleteBudgetItem = async (
 
     if (!deletedBudget) {
       res.status(404).json({ message: "Budget item not found" });
+      return;
     }
 
     res.json({ message: "Budget item deleted successfully" });

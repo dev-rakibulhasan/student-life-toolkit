@@ -172,6 +172,7 @@ export const updateQuestion = async (
       res.status(400).json({
         message: "Multiple choice questions must have at least 2 options",
       });
+      return;
     }
 
     // Update the question
@@ -209,6 +210,7 @@ export const deleteQuestion = async (
 
     if (!deletedQuestion) {
       res.status(404).json({ message: "Question not found" });
+      return;
     }
 
     res.json({ message: "Question deleted successfully" });

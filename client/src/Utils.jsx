@@ -46,11 +46,11 @@ export const filterBudgetByTimePeriod = (items, timeFilter) => {
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  // Start of week (Monday)
+  // Start of week (Saturday)
   const startOfWeek = new Date(today);
   const dayOfWeek = today.getDay();
-  const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  startOfWeek.setDate(today.getDate() - diffToMonday);
+  const diffToSaturday = dayOfWeek === 6 ? 0 : (dayOfWeek + 1) % 7;
+  startOfWeek.setDate(today.getDate() - diffToSaturday);
 
   // Start of month
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -211,16 +211,16 @@ const getDateRange = (timeFilter, sessions) => {
 
     case "thisWeek":
       const dayOfWeek = now.getDay();
-      const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+      const diffToSaturday = dayOfWeek === 6 ? 0 : (dayOfWeek + 1) % 7;
       startDate = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate() - diffToMonday
+        now.getDate() - diffToSaturday
       );
       endDate = new Date(
         now.getFullYear(),
         now.getMonth(),
-        now.getDate() + (6 - diffToMonday),
+        now.getDate() + (6 - diffToSaturday),
         23,
         59,
         59
@@ -296,11 +296,7 @@ const formatChartDate = (date, timeFilter) => {
 
     case "lifetime":
     default:
-      return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
+      return "Lifetime";
   }
 };
 

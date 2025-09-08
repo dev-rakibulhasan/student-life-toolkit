@@ -13,6 +13,7 @@ import MySubjects from "./pages/user/MySubjects";
 import MyInstructors from "./pages/user/MyInstructors";
 import StudyPlanner from "./pages/user/StudyPlanner";
 import TimeTracker from "./pages/user/TimeTracker";
+import Dashboard from "./pages/user/Dashboard";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
         {/* Routes with drawer layout */}
         <Route element={<AuthenticatedLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/class-schedules" element={<ClassSchedules />} />
           <Route path="/budget-tracker" element={<BudgetTracker />} />
           <Route path="/questio-nanager" element={<ManageQuestions />} />

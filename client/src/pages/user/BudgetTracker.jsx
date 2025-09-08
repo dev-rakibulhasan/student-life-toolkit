@@ -8,7 +8,6 @@ import moment from "moment";
 const BudgetTracker = () => {
   const {
     budgetItems,
-    summary,
     fetchBudgetItems,
     fetchBudgetSummary,
     deleteBudgetItem,
@@ -195,7 +194,7 @@ const BudgetTracker = () => {
                     <span
                       className={`badge ${
                         item.type === "income" ? "badge-success" : "badge-error"
-                      }`}
+                      } capitalize`}
                     >
                       {item.type}
                     </span>

@@ -58,6 +58,7 @@ export const updateClass = async (
 
     if (!updatedClass) {
       res.status(404).json({ message: "Class not found" });
+      return;
     }
 
     res.json(updatedClass);
@@ -77,6 +78,7 @@ export const deleteClass = async (
 
     if (!deletedClass) {
       res.status(404).json({ message: "Class not found" });
+      return;
     }
 
     res.json({ message: "Class deleted successfully" });

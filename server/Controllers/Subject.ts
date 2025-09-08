@@ -99,6 +99,7 @@ export const deleteSubject = async (
 
     if (!deletedSubject) {
       res.status(404).json({ message: "Subject not found" });
+      return;
     }
 
     res.json({ message: "Subject deleted successfully" });

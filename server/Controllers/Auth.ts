@@ -3,7 +3,58 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import User from "../Models/User.js";
 import { JWT_SECRET } from "../utils.js";
+import Class from "../Models/Class.js";
+import Instructor from "../Models/Instructor.js";
+import Budget from "../Models/Budget.js";
+import StudySession from "../Models/StudySession.js";
+import StudyTask from "../Models/StudyTask.js";
 
+export const getDashboardData = async (req: Request, res: Response) => {
+  try {
+    const user = req.params.userId;
+    // Fetch all data in parallel
+    const [
+      totalClasses,
+      totalInstructors,
+      budgetRecords,
+      pendingTasks,
+      highPriorityTasks,
+      mediumPriorityTasks,
+      lowPriorityTasks,
+    ] = await Promise.all([
+      Class.countDocuments({ user }),
+      Instructor.countDocuments({ user }),
+      Budget.find({ user }),
+      StudyTask.countDocuments({ user, completed: false }),
+      StudyTask.countDocuments({ user, completed: false, priority: "high" }),
+      StudyTask.countDocuments({ user, completed: false, priority: "medium" }),
+      StudyTask.countDocuments({ user, completed: false, priority: "low" }),
+    ]);
+    // Calculate current balance from budget records
+    let currentBalance = 0;
+    budgetRecords.forEach((record) => {
+      if (record.type === "income") {
+        currentBalance += record.amount;
+      } else if (record.type === "expense") {
+        currentBalance -= record.amount;
+      }
+    });
+    res.json({
+      totalClasses,
+      totalInstructors,
+      pendingTasks,
+      highPriorityTasks,
+      mediumPriorityTasks,
+      lowPriorityTasks,
+      currentBalance,
+      budgetRecords,
+    });
+  } catch (error) {
+    console.error("Dashboard data error:", error);
+    res.status(500).json({ message: "Error fetching dashboard data" });
+  }
+};
+// Register User
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, email, password } = req.body;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,11 +20,9 @@ const Login = () => {
     setLoading(true);
     const result = await login({ email, password });
     if (result.success) {
-      setSuccess(result.message);
       sessionStorage.setItem("justLoggedIn", "true");
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);
+      navigate("/dashboard");
+      toast.success(result.message);
     } else {
       setError(result.message);
       setTimeout(() => {
