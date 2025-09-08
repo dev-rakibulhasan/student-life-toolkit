@@ -54,20 +54,31 @@ const Dashboard = () => {
     if (totalExpenses > totalIncome) {
       return {
         type: "error",
-        message:
-          "Alert: Your expenses exceed your income. This is not sustainable!",
+        message: (
+          <span>
+            <b>Alert:</b> Your expenses exceed your income. This is not
+            sustainable!
+          </span>
+        ),
       };
     } else if (currentBalance < 100) {
       return {
         type: "warning",
-        message:
-          "Warning: Your balance is very low (less than ৳100). Consider reducing expenses.",
+        message: (
+          <span>
+            <b>Warning:</b> Your balance is very low (less than ৳100). Consider
+            reducing expenses.
+          </span>
+        ),
       };
     } else {
       return {
         type: "success",
-        message:
-          "Good news: Your finances are healthy with a positive balance!",
+        message: (
+          <span>
+            <b>Good news:</b> Your finances are healthy with a positive balance!
+          </span>
+        ),
       };
     }
   };
@@ -200,7 +211,11 @@ const Dashboard = () => {
         {/* Current Balance Card */}
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title text-accent">
+            <h2
+              className={`card-title ${
+                currentBalance >= 0 ? "text-success" : "text-error"
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -260,34 +275,36 @@ const Dashboard = () => {
               </div>
               <div
                 role="alert"
-                className={`alert alert-${financialStatus.type}`}
+                className={`alert alert-soft alert-${financialStatus.type}`}
               >
                 {financialStatus.type == "warning" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 shrink-0 stroke-current"
                     fill="none"
                     viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
                     />
                   </svg>
                 ) : financialStatus.type == "error" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 shrink-0 stroke-current"
                     fill="none"
                     viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
                   >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
                     />
                   </svg>
                 ) : (

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import toast from "react-hot-toast";
 import { getTimeFilterLabel, prepareStudyTimeChartData } from "../../Utils";
 import useStudySession from "../../hooks/useStudySession";
 import StudyTimer from "../../components/UI/StudyTimer";
@@ -15,7 +14,6 @@ const TimeTracker = () => {
     filters,
     fetchSessions,
     fetchStats,
-    deleteSession,
     updateFilters,
   } = useStudySession();
   const [subjects, setSubjects] = useState([]);
@@ -37,17 +35,6 @@ const TimeTracker = () => {
 
   const handleFilterChange = (filterType, value) => {
     updateFilters({ ...filters, [filterType]: value });
-  };
-
-  const handleDeleteSession = async (id) => {
-    if (window.confirm("Are you sure you want to delete this study session?")) {
-      const result = await deleteSession(id);
-      if (result.success) {
-        toast.success("Study session deleted successfully");
-      } else {
-        toast.error(result.error || "Failed to delete study session");
-      }
-    }
   };
 
   return (
@@ -126,7 +113,6 @@ const TimeTracker = () => {
       <StudySessionList
         sessions={sessions}
         loading={loading}
-        onDeleteSession={handleDeleteSession}
         subjects={subjects}
       />
 

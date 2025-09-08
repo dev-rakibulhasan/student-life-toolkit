@@ -3,6 +3,9 @@ import useClass from "../../hooks/useClass";
 import ClassForm from "../../components/UI/ClassForm";
 import { days, formatTime, timeSlots } from "../../Utils";
 import ClassDetails from "../../components/UI/ClassDetails";
+import toast from "react-hot-toast";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
+import useDeleteConfModel from "../../hooks/useDeleteConfModel";
 
 const ClassSchedules = () => {
   const { classes, fetchClasses, deleteClass } = useClass();
@@ -13,6 +16,14 @@ const ClassSchedules = () => {
   const [nextClass, setNextClass] = useState(null);
   const [nextClassDisplayDay, setNextClassDisplayDay] = useState("");
 
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModel();
   useEffect(() => {
     fetchClasses();
   }, []);
@@ -95,9 +106,18 @@ const ClassSchedules = () => {
     setShowForm(true);
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this class?")) {
-      await deleteClass(id);
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteClass(targetItemId);
+      if (res.success) {
+        toast.success("Schedule deleted successfully.");
+      }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -215,7 +235,14 @@ const ClassSchedules = () => {
         selectedClass={selectedClass}
         closeModal={closeModal}
         handleEdit={handleEdit}
-        handleDelete={handleDelete}
+        handleDelete={openDeleteConfModal}
+      />
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="class schedule"
+        isLoading={isDeleting}
       />
     </div>
   );

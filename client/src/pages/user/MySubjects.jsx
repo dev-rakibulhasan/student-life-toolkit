@@ -2,12 +2,22 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import SubjectForm from "../../components/UI/SubjectForm";
 import useSubject from "../../hooks/useSubject";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
 
 const MySubjects = () => {
   const { subjects, loading, fetchSubjects, deleteSubject } = useSubject();
   const [showForm, setShowForm] = useState(false);
   const [editingSubject, setEditingSubject] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
 
   useEffect(() => {
     fetchSubjects();
@@ -23,25 +33,24 @@ const MySubjects = () => {
     setShowForm(true);
   };
 
-  const handleDeleteSubject = async (id) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this subject? This action cannot be undone."
-      )
-    ) {
-      const result = await deleteSubject(id);
-      if (result.success) {
-        toast.success("Subject deleted successfully");
-      } else {
-        toast.error(result.error || "Failed to delete subject");
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteSubject(targetItemId);
+      if (res.success) {
+        toast.success("Subject deleted successfully.");
       }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
     }
   };
-
   const handleFormSuccess = () => {
     setShowForm(false);
     setEditingSubject(null);
-    fetchSubjects(); // Refresh the list
+    fetchSubjects();
   };
 
   const filteredSubjects = subjects.filter(
@@ -127,7 +136,7 @@ const MySubjects = () => {
                   </button>
                   <button
                     className="btn btn-sm btn-outline btn-error"
-                    onClick={() => handleDeleteSubject(subject._id)}
+                    onClick={() => openDeleteConfModal(subject._id)}
                   >
                     Delete
                   </button>
@@ -137,6 +146,13 @@ const MySubjects = () => {
           ))}
         </div>
       )}
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="subject"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };

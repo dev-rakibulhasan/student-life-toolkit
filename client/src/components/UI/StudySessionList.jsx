@@ -1,15 +1,37 @@
 import React, { useState } from "react";
+import DeleteConfModal from "./DeleteConfModal";
+import toast from "react-hot-toast";
+import useStudySession from "../../hooks/useStudySession";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
 
-const StudySessionList = ({
-  sessions,
-  loading,
-  onDeleteSession,
-  subjects = [],
-}) => {
+const StudySessionList = ({ sessions, loading, subjects = [] }) => {
   const [sortBy, setSortBy] = useState("date");
   const [sortOrder, setSortOrder] = useState("desc");
   const [filterSubject, setFilterSubject] = useState("All");
   const [filterDate, setFilterDate] = useState("");
+  const { deleteSession } = useStudySession();
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteSession(targetItemId);
+      if (res.success) {
+        toast.success("Study session deleted successfully.");
+      }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -282,15 +304,7 @@ const StudySessionList = ({
                   <td>
                     <button
                       className="btn btn-error btn-xs btn-outline"
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            "Are you sure you want to delete this study session?"
-                          )
-                        ) {
-                          onDeleteSession(session._id);
-                        }
-                      }}
+                      onClick={() => openDeleteConfModal(session._id)}
                     >
                       Delete
                     </button>
@@ -319,6 +333,13 @@ const StudySessionList = ({
           </div>
         )}
       </div>
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="session"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };

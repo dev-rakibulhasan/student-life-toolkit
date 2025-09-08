@@ -4,6 +4,8 @@ import useStudyTask from "../../hooks/useStudyTask";
 import StudyTaskCard from "../../components/UI/StudyTaskCard";
 import StudyTaskForm from "../../components/UI/StudyTaskForm";
 import StudyTaskStats from "../../components/UI/StudyTaskStats";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
 
 const StudyPlanner = () => {
   const {
@@ -19,7 +21,14 @@ const StudyPlanner = () => {
   } = useStudyTask();
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
-  const [view, setView] = useState("list");
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
   useEffect(() => {
     fetchTasks(filters);
     fetchStats();
@@ -44,17 +53,20 @@ const StudyPlanner = () => {
     }
   };
 
-  const handleDeleteTask = async (id) => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
-      const result = await deleteTask(id);
-      if (result.success) {
-        toast.success("Task deleted successfully");
-      } else {
-        toast.error(result.error || "Failed to delete task");
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteTask(targetItemId);
+      if (res.success) {
+        toast.success("Task deleted successfully.");
       }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
     }
   };
-
   const handleFormSuccess = () => {
     setShowForm(false);
     setEditingTask(null);
@@ -188,11 +200,18 @@ const StudyPlanner = () => {
               task={task}
               onEdit={() => handleEditTask(task)}
               onToggle={() => handleToggleTask(task._id)}
-              onDelete={() => handleDeleteTask(task._id)}
+              onDelete={() => openDeleteConfModal(task._id)}
             />
           ))}
         </div>
       )}
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="subject"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };

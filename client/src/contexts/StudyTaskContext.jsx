@@ -114,7 +114,7 @@ export const StudyTaskProvider = ({ children }) => {
 
   const deleteTask = async (id) => {
     try {
-      await api.delete(`/study-task/update/${id}`);
+      await api.delete(`/study-task/delete/${id}`);
       dispatch({ type: "DELETE_TASK", payload: id });
       await fetchStats();
       return { success: true };

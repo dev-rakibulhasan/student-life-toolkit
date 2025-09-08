@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import useInstructor from "../../hooks/useInstructor";
 import InstructorForm from "../../components/UI/InstructorForm";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
 
 const MyInstructors = () => {
   const { instructors, loading, fetchInstructors, deleteInstructor } =
@@ -9,6 +11,14 @@ const MyInstructors = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingInstructor, setEditingInstructor] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
 
   useEffect(() => {
     fetchInstructors();
@@ -23,19 +33,18 @@ const MyInstructors = () => {
     setEditingInstructor(instructor);
     setShowForm(true);
   };
-
-  const handleDeleteInstructor = async (id) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this instructor? This action cannot be undone."
-      )
-    ) {
-      const result = await deleteInstructor(id);
-      if (result.success) {
-        toast.success("Instructor deleted successfully");
-      } else {
-        toast.error(result.error || "Failed to delete instructor");
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteInstructor(targetItemId);
+      if (res.success) {
+        toast.success("Instructor deleted successfully.");
       }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -180,7 +189,7 @@ const MyInstructors = () => {
                     </button>
                     <button
                       className="btn btn-sm btn-circle btn-outline btn-error"
-                      onClick={() => handleDeleteInstructor(instructor._id)}
+                      onClick={() => openDeleteConfModal(instructor._id)}
                       title="Delete"
                     >
                       <svg
@@ -233,6 +242,13 @@ const MyInstructors = () => {
           ))}
         </div>
       )}
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="instructor"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };

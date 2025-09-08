@@ -4,6 +4,9 @@ import BudgetCharts from "../../components/UI/BudgetCharts";
 import BudgetForm from "../../components/UI/BudgetForm";
 import { filterBudgetByTimePeriod, getTimeFilterLabel } from "../../Utils";
 import moment from "moment";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
+import toast from "react-hot-toast";
 
 const BudgetTracker = () => {
   const {
@@ -16,6 +19,14 @@ const BudgetTracker = () => {
   const [editItem, setEditItem] = useState(null);
   const [filterType, setFilterType] = useState("all");
   const [timeFilter, setTimeFilter] = useState("lifetime");
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
 
   useEffect(() => {
     fetchBudgetItems();
@@ -64,9 +75,18 @@ const BudgetTracker = () => {
     setShowForm(true);
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      await deleteBudgetItem(id);
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteBudgetItem(targetItemId);
+      if (res.success) {
+        toast.success("Item deleted successfully.");
+      }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -218,7 +238,7 @@ const BudgetTracker = () => {
                       </button>
                       <button
                         className="btn btn-sm btn-outline btn-error"
-                        onClick={() => handleDelete(item._id)}
+                        onClick={() => openDeleteConfModal(item._id)}
                       >
                         Delete
                       </button>
@@ -238,6 +258,13 @@ const BudgetTracker = () => {
       </div>
 
       {showForm && <BudgetForm editItem={editItem} onClose={closeForm} />}
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="item"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };

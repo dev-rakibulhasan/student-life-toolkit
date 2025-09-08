@@ -6,6 +6,9 @@ import useQuestion from "../../hooks/ussQuistion";
 import ManualQuestionForm from "../../components/UI/ManualQuestionForm";
 import QuestionLibrary from "../../components/UI/QuestionLibrary";
 import QuestionEditForm from "../../components/UI/QuestionEditForm";
+import useDeleteConfModal from "../../hooks/useDeleteConfModel";
+import DeleteConfModal from "../../components/UI/DeleteConfModal";
+import toast from "react-hot-toast";
 
 const ExamQAGenerator = () => {
   const {
@@ -31,6 +34,14 @@ const ExamQAGenerator = () => {
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [currentStreak, setCurrentStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
+  const {
+    openDeleteConfModal,
+    closeDeleteConfModal,
+    isOpenDeleteConfModal,
+    targetItemId,
+    isDeleting,
+    setIsDeleting,
+  } = useDeleteConfModal();
 
   useEffect(() => {
     fetchQuestions(filters);
@@ -108,7 +119,23 @@ const ExamQAGenerator = () => {
     setCurrentQuestions(currentQuestions.filter((q) => q._id !== id));
     fetchQuestions();
   };
-
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      const res = await deleteQuestion(targetItemId);
+      if (res.success) {
+        setCurrentQuestions(
+          currentQuestions.filter((q) => q._id !== targetItemId)
+        );
+        toast.success("Question deleted successfully.");
+      }
+      closeDeleteConfModal();
+    } catch (e) {
+      toast.error("Something went wrong.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
   const handleFilterChange = (filterType, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -349,7 +376,7 @@ const ExamQAGenerator = () => {
           <QuestionLibrary
             filteredQuestions={filteredQuestions}
             totalQuestions={totalQuestions}
-            onDelete={handleDeleteQuestion}
+            onDelete={openDeleteConfModal}
             onEdit={handleEditQuestion}
           />
         </div>
@@ -514,6 +541,13 @@ const ExamQAGenerator = () => {
           onUpdate={handleUpdateQuestion}
         />
       )}
+      <DeleteConfModal
+        isOpen={isOpenDeleteConfModal}
+        onClose={closeDeleteConfModal}
+        onConfirm={handleDelete}
+        itemName="question"
+        isLoading={isDeleting}
+      />
     </div>
   );
 };
