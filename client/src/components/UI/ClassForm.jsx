@@ -5,6 +5,7 @@ import { days, formatTime, timeSlots } from "../../Utils";
 import useSubject from "../../hooks/useSubject";
 import useInstructor from "../../hooks/useInstructor";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ClassForm = ({ editClass = null, onClose, isTimeSlotBooked }) => {
   const { classes, addClass, updateClass } = useClass();
@@ -81,8 +82,11 @@ const ClassForm = ({ editClass = null, onClose, isTimeSlotBooked }) => {
     setLoading(false);
     if (result.success) {
       onClose();
+      toast.success(
+        `Shcedule ${editClass ? "updated" : "created"} successfully.`
+      );
     } else {
-      alert(result.error || "Something went wrong");
+      toast.error(result.error || "Something went wrong");
     }
   };
 

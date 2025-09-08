@@ -3,6 +3,7 @@ import useQuestion from "../../hooks/ussQuistion";
 import useAuth from "../../hooks/useAuth";
 import { questionTypes } from "../../Utils";
 import useSubject from "../../hooks/useSubject";
+import toast from "react-hot-toast";
 
 const QuestionGenerator = ({ onQuestionsGenerated }) => {
   const { generateQuestions, loading } = useQuestion();
@@ -27,8 +28,9 @@ const QuestionGenerator = ({ onQuestionsGenerated }) => {
 
     if (result.success) {
       onQuestionsGenerated && onQuestionsGenerated(result.questions);
+      toast.success(`${formData.count} questions created.`);
     } else {
-      alert(result.error || "Failed to generate questions");
+      toast.error(result.error || "Failed to generate questions");
     }
   };
   useEffect(() => {

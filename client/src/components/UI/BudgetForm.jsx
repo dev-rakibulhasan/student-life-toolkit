@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useBudget from "../../hooks/useBudget";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const BudgetForm = ({ editItem = null, onClose }) => {
   const { addBudgetItem, updateBudgetItem } = useBudget();
@@ -55,8 +56,9 @@ const BudgetForm = ({ editItem = null, onClose }) => {
     setLoading(false);
     if (result.success) {
       onClose();
+      toast.success(`Item ${editItem ? "updated" : "created"} successfully.`);
     } else {
-      alert(result.error || "Something went wrong");
+      toast.error(result.error || "Something went wrong");
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { questionTypes } from "../../Utils";
 import useQuestion from "../../hooks/ussQuistion";
 import useSubject from "../../hooks/useSubject";
+import toast from "react-hot-toast";
 
 const QuestionEditForm = ({ question, onClose, onUpdate }) => {
   const { updateQuestion } = useQuestion();
@@ -103,15 +104,15 @@ const QuestionEditForm = ({ question, onClose, onUpdate }) => {
     }
 
     const result = await updateQuestion(question._id, submissionData);
-    console.log(result);
 
     setLoading(false);
 
     if (result.success) {
       onUpdate && onUpdate(result.question);
       onClose();
+      toast.success("Question updated successfully.");
     } else {
-      alert(result.error || "Failed to update question");
+      toast.error(result.error || "Failed to update question");
     }
   };
 

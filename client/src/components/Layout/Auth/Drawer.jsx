@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import useAuth from "../../../hooks/useAuth";
 
 const Drawer = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -210,23 +210,30 @@ const Drawer = ({ children }) => {
         <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           <div className="mb-4">
             <Link to="/" className="text-2xl font-bold">
-              Student Life Toolkit
+              STUDENT LIFE TOOLKIT
             </Link>
           </div>
 
           <ul>
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  to={item.path}
-                  className="flex items-center py-3 px-4 rounded-lg hover:bg-base-100 transition-colors"
-                  onClick={() => isMobile && setIsDrawerOpen(false)}
-                >
-                  <span className="mr-3">{item.icon}</span>
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname.startsWith(item.path);
+              return (
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
+                    className={`flex items-center py-3 px-4 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-secondary text-white font-semibold"
+                        : "hover:bg-base-100"
+                    }`}
+                    onClick={() => isMobile && setIsDrawerOpen(false)}
+                  >
+                    <span className="mr-3">{item.icon}</span>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
