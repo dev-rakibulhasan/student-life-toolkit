@@ -13,7 +13,7 @@ This tool will help students to make their life easy. Features available in this
 - Instructors directory
 - Subjects Directory
 
-## Features breakdown
+## Features Overview
 
 Here is the deep overviews of all the tools and features:
 
@@ -71,3 +71,39 @@ Here is the deep overviews of all the tools and features:
 - Student can create read, update, delete their subjects with subject name, description and color.
 - Later they can use the listed subjects for Class scheduler, Study planner, Time tracker and Question Generator
 - Created subjects colors will be shown as line color in the line chart.
+
+## Technologies I used
+
+### Frontend:
+
+- @tailwindcss/vite: ^4.1.10
+- axios: ^1.10.0
+- daisyui: ^5.0.43
+- jwt-decode: ^4.0.0
+- moment: ^2.30.1
+- react: ^19.1.0
+- react-dom: ^19.1.0
+- react-hot-toast: ^2.6.0
+- react-router-dom: ^7.6.2
+- recharts: ^3.1.2
+- tailwindcss: ^4.1.10
+- vite: ^6.3.5
+
+### Backend:
+
+- bcryptjs: ^3.0.2
+- cookie-parser: ^1.4.7
+- cors: ^2.8.5
+- dotenv: ^16.5.0
+- express: ^4.21.2
+- jsonwebtoken: ^9.0.2
+- mongoose: ^8.12.1
+- openai: ^5.19.1
+
+### Database:
+
+- Mongo DB
+
+### AI Model:
+
+- GPT 4.1 nano
