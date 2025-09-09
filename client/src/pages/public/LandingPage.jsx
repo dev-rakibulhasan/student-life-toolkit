@@ -203,9 +203,13 @@ const LandingPage = () => {
               <Link to="/dashboard" className="btn btn-accent btn-lg">
                 Get Started
               </Link>
-              <button className="btn btn-outline btn-lg btn-accent-content">
+              <a
+                href="https://drive.google.com/file/d/1YKoc7S2dip2AI4EpkFAHzXVitZVnij6I/view"
+                target="_blank"
+                className="btn btn-outline btn-lg btn-accent-content"
+              >
                 View Demo
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -552,9 +556,13 @@ const LandingPage = () => {
             <Link to="/dashboard" className="btn btn-accent btn-lg">
               Get Started
             </Link>
-            <button className="btn btn-outline btn-lg btn-accent-content">
+            <a
+              href="https://drive.google.com/file/d/1YKoc7S2dip2AI4EpkFAHzXVitZVnij6I/view"
+              target="_blank"
+              className="btn btn-outline btn-lg btn-accent-content"
+            >
               View Demo
-            </button>
+            </a>
           </div>
         </div>
       </section>
