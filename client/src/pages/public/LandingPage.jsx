@@ -195,7 +195,7 @@ const LandingPage = () => {
               All Your Study Tools in One Place
             </h1>
             <p className="py-6 text-xl">
-              Student Life Toolkit combines five essential tools to help you
+              Student Life Toolkit combines all essential tools to help you
               excel in your academic journey. From class scheduling to exam
               preparation, we've got you covered.
             </p>
