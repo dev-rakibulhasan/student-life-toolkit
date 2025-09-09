@@ -89,7 +89,8 @@ const SubjectForm = ({ subject = null, onClose, onSuccess }) => {
           <div className="form-control">
             <label className="label">
               <span className="label-text">Subject Name</span>
-            </label>
+            </label>{" "}
+            <br />
             <input
               type="text"
               name="name"

@@ -202,7 +202,7 @@ const InstructorForm = ({ instructor = null, onClose, onSuccess }) => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Website</span>
+              <span className="label-text">Website / Social Media</span>
             </label>
             <br />
             <input

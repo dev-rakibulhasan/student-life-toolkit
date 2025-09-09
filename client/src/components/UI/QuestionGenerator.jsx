@@ -28,7 +28,11 @@ const QuestionGenerator = ({ onQuestionsGenerated }) => {
 
     if (result.success) {
       onQuestionsGenerated && onQuestionsGenerated(result.questions);
-      toast.success(`${formData.count} questions created.`);
+      toast.success(
+        `${formData.count} ${
+          formData.count == 1 ? "question" : "questions"
+        } created.`
+      );
     } else {
       toast.error(result.error || "Failed to generate questions");
     }

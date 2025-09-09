@@ -27,9 +27,6 @@ const Navbar = () => {
           <li>
             <a href="#testimonials">Testimonials</a>
           </li>
-          <li>
-            <a href="#faq">FAQ</a>
-          </li>
           {!user ? (
             <>
               <li>
@@ -102,11 +99,6 @@ const Navbar = () => {
             <li>
               <a href="#testimonials" onClick={() => setIsOpen(false)}>
                 Testimonials
-              </a>
-            </li>
-            <li>
-              <a href="#faq" onClick={() => setIsOpen(false)}>
-                FAQ
               </a>
             </li>
             {!user ? (

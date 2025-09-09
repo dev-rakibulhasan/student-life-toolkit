@@ -24,7 +24,7 @@ export const getDashboardData = async (req: Request, res: Response) => {
     ] = await Promise.all([
       Class.countDocuments({ user }),
       Instructor.countDocuments({ user }),
-      Budget.find({ user }),
+      Budget.find({ user }).sort({ date: -1 }),
       StudyTask.countDocuments({ user, completed: false }),
       StudyTask.countDocuments({ user, completed: false, priority: "high" }),
       StudyTask.countDocuments({ user, completed: false, priority: "medium" }),

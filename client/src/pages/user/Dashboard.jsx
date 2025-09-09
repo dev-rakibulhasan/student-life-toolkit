@@ -36,7 +36,7 @@ const Dashboard = () => {
     };
 
     fetchDashboardData();
-    fetchSessions();
+    fetchSessions({ subject: "All", timeFilter: "thisWeek" });
   }, []);
   // Calculate financial metrics
   const totalIncome = dashboardData.budgetRecords

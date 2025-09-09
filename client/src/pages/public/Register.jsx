@@ -21,6 +21,7 @@ const Register = () => {
     setLoading(true);
     if (password !== confirmPassword) {
       setError("Password didn't match");
+      setLoading(false);
       return;
     }
     const result = await register({ name, email, password });
