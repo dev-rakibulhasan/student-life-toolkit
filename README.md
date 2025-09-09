@@ -20,7 +20,7 @@ Here is the deep overviews of all the tools and features:
 ### Dashboard:
 
 - Students can see Total Schedules, Total Instructors, Pending Tasks, Current Balance, Income vs Expenses, Pending Tasks By Priority,Recent Transactions and This Weeks Study Time (In a line chart).
-- If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.
+  `-  If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.`
 - Student will see financial advice with a typing effect in the Income vs Expenses card.
   ![Alt text](image-url)
 
