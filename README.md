@@ -5,12 +5,12 @@
 This tool will help students to make their life easy. Features available in this platform:
 
 - Modern informative dashboard
-- Class scheduler
-- Budget tracker
-- Study planner
-- Time tracker
+- Class Scheduler
+- Budget Tracker
+- Study Planner
+- Time Tracker
 - Question Generator
-- Instructors directory
+- Instructors Directory
 - Subjects Directory
 
 ## Features Overview
@@ -25,9 +25,9 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 - `If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.`
 - `Student will see financial advice with a typing effect in the Income vs Expenses card.`
 
-### Class scheduler:
+### Class Scheduler:
 
-![Class scheduler](https://media.rakibulhasan.dev/slt/class-schedule.jpg)
+![Class Scheduler](https://media.rakibulhasan.dev/slt/class-schedule.jpg)
 
 - Student can create, read, update, delete, class schedule.
 - There are available time slot from 8 AM to 8 PM by 15 minutes itaration. And 7 days are availble as day slots.
@@ -35,17 +35,17 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 - `Student will be informed about next class on class schedule page.`
 - Student can't create multiple schedule in same time slot. It will retun an error message.
 
-### Budget tracker:
+### Budget Tracker:
 
-![Budget tracker](https://media.rakibulhasan.dev/slt/budget-tracker.jpg)
+![Budget Tracker](https://media.rakibulhasan.dev/slt/budget-tracker.jpg)
 
 - Student can can create, read, update and delete their income and expense records. The changes will reflect real time in UI.
 - They can filter records by, Income, Expense, and Today, Yesterday, This week, This month, This year and Lifetime basis.
 - `They can check their income and expenses amount and percentage by categories in progress bars.`
 
-### Study planner:
+### Study Planner:
 
-![Study planner](https://media.rakibulhasan.dev/slt/study-planner.jpg)
+![Study Planner](https://media.rakibulhasan.dev/slt/study-planner.jpg)
 
 - Student can create, read, update, delete study tasks.
 - `They can check tasks progress by priority.`
@@ -71,9 +71,9 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 - `Student can see their quiz performance in a donut chart with Accuracy, Current Streak, Best Streak in practice mode.`
 - Student can filter questions by, Subject, Topic, Difficulty and Type. They also can search questions.
 
-### Instructors directory:
+### Instructors Directory:
 
-![Instructors directory](https://media.rakibulhasan.dev/slt/instructors-directory.jpg)
+![Instructors Directory](https://media.rakibulhasan.dev/slt/instructors-directory.jpg)
 
 - Students can create, read, update, delete instructors information.
 - `They can directly contact with any instructor listed in this directory.`
@@ -87,7 +87,7 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 - `Later they can use the listed subjects for Class scheduler, Study planner, Time tracker and Question Generator.`
 - `Created subjects colors will be shown as line color in the line chart.`
 
-## Technologies I used
+## Technologies I Used
 
 ### Frontend:
 
@@ -123,4 +123,4 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 
 - GPT 4.1 nano
 
-#### **Note:** Most of the filter, sorting and search fearures are handled from frontend to express my react skill. Because frontend is the priority here,
+  ##### **Note:** Most of the filter, sorting and search fearures are handled from frontend to express my react skill. Because frontend is the priority here,
