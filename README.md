@@ -50,6 +50,7 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 
 - Student can create, read, update, delete study tasks.
 - `They can check tasks progress by priority.`
+- `They can check their task completion Rate`
 - They can filter task by Subject, Priority and Status.
 - They can toggle task status from pending to completed.
 
