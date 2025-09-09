@@ -15,15 +15,15 @@ This tool will help students to make their life easy. Features available in this
 
 ## Features Overview
 
-Here is the deep overviews of all the tools and features. Unique fearures are <mark>highlighted</mark>:
+Here is the deep overviews of all the tools and features. Unique fearures are <span style="background-color: yellow;">highlighted</span>:
 
 ### Dashboard:
 
 ![Alt text](image-url)
 
 - Students can see Total Schedules, Total Instructors, Pending Tasks, Current Balance, Income vs Expenses, Pending Tasks By Priority,Recent Transactions and This Weeks Study Time (In a line chart).
-- <mark>If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.</mark>
-- <mark>Student will see financial advice with a typing effect in the Income vs Expenses card.</mark>
+- <span style="background-color: yellow;">If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.</span>
+- <span style="background-color: yellow;">Student will see financial advice with a typing effect in the Income vs Expenses card.</span>
 
 ### Class scheduler:
 
@@ -31,7 +31,7 @@ Here is the deep overviews of all the tools and features. Unique fearures are <m
 
 - Student can create, read, update, delete, class schedule.
 - There are available time slot from 8 AM to 8 PM by 15 minutes itaration. And 7 days are availble as day slots.
-- <mark>To create time slot, Students need to select subject, instructor, day, time and color. They can create subject and instructors details for farther use.</mark>
+- <span style="background-color: yellow;">To create time slot, Students need to select subject, instructor, day, time and color. They can create subject and instructors details for farther use.</span>
 - Student can't create multiple schedule in same time slot. It will retun an error message.
 
 ### Budget tracker:
@@ -40,14 +40,14 @@ Here is the deep overviews of all the tools and features. Unique fearures are <m
 
 - Student can can create, read, update and delete their income and expense records. The changes will reflect real time in UI.
 - They can filter records by, Income, Expense, and Today, Yesterday, This week, This month, This year and Lifetime basis.
-- <mark>They can check their income and expenses amount and percentage by categories in progress bars.</mark>
+- <span style="background-color: yellow;">They can check their income and expenses amount and percentage by categories in progress bars.</span>
 
 ### Study planner:
 
 ![Alt text](image-url)
 
 - Student can create, read, update, delete study tasks.
-- <mark>They can check tasks progress by priority.</mark>
+- <span style="background-color: yellow;">They can check tasks progress by priority.</span>
 - They can filter task by Subject, Priority and Status.
 - They can toggle task status from pending to completed.
 
@@ -55,19 +55,19 @@ Here is the deep overviews of all the tools and features. Unique fearures are <m
 
 ![Alt text](image-url)
 
-- <mark>Users can select a subject, add a note then start a study session during their study time. So, Our system will track how many minutes or hours the studied on a specefic subject and topic.</mark>
+- <span style="background-color: yellow;">Users can select a subject, add a note then start a study session during their study time. So, Our system will track how many minutes or hours the studied on a specefic subject and topic.</span>
 - Each study session records will be shown on the time tracker page. Student can delete a session record if they want.
-- <mark>Student can see their Today, Yesterday, This week, This month, This year and Lifetime study progress by all or any specefic subject in a line chart.</mark>
+- <span style="background-color: yellow;">Student can see their Today, Yesterday, This week, This month, This year and Lifetime study progress by all or any specefic subject in a line chart.</span>
 
 ### Question Generator:
 
 ![Alt text](image-url)
 
-- <mark>Student can generate qestions by AI. The student just have to select subject, Difficulty, Question type and enter the topic and number of questions they want to generate. When they they will click on the Generate Questions button, It will automatically create questions by the students demand.</mark>
+- <span style="background-color: yellow;">Student can generate qestions by AI. The student just have to select subject, Difficulty, Question type and enter the topic and number of questions they want to generate. When they they will click on the Generate Questions button, It will automatically create questions by the students demand.</span>
 - After creating questions by AI, System will redirect student to practice mode with the newly generated questions.
 - Also student can create questions manually.
 - Student can update and delete their questions.
-- <mark>Student can see their quiz performance in a donut chart with Accuracy, Current Streak, Best Streak in practice mode.</mark>
+- <span style="background-color: yellow;">Student can see their quiz performance in a donut chart with Accuracy, Current Streak, Best Streak in practice mode.</span>
 - Student can filter questions by, Subject, Topic, Difficulty and Type. They also can search questions.
 
 ### Instructors directory:
@@ -75,16 +75,16 @@ Here is the deep overviews of all the tools and features. Unique fearures are <m
 ![Alt text](image-url)
 
 - Students can create, read, update, delete instructors information.
-- <mark>They can directly contact with any instructor listed in this directory.</mark>
-- <mark>They can use the listed instructors info during class schedule creation.</mark>
+- <span style="background-color: yellow;">They can directly contact with any instructor listed in this directory.</span>
+- <span style="background-color: yellow;">They can use the listed instructors info during class schedule creation.</span>
 
 ### Subjects Directory:
 
 ![Alt text](image-url)
 
 - Student can create read, update, delete their subjects with subject name, description and color.
-- <mark>Later they can use the listed subjects for Class scheduler, Study planner, Time tracker and Question Generator.</mark>
-- <mark>Created subjects colors will be shown as line color in the line chart.</mark>
+- <span style="background-color: yellow;">Later they can use the listed subjects for Class scheduler, Study planner, Time tracker and Question Generator.</span>
+- <span style="background-color: yellow;">Created subjects colors will be shown as line color in the line chart.</span>
 
 ## Technologies I used
 
