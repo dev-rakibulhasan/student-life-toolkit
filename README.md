@@ -22,6 +22,7 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 ![Dashboard](https://media.rakibulhasan.dev/slt/dashboard.jpg)
 
 - Students can see Total Schedules, Total Instructors, Pending Tasks, Current Balance, Income vs Expenses, Pending Tasks By Priority,Recent Transactions and This Weeks Study Time (In a line chart).
+- The balance card texts will change color based on students current balance. If balance is Positive it will be green. If balance is 0 or negative. It will be red.
 - `If Students balance is less thsn 100 taka, Then they will see an warning message in dashboard. If total expense is greater than total income, Then they will see an alert message in the dashboard. If financial status is good. Then it will show a positive message in the dashboard.`
 - `Student will see financial advice with a typing effect in the Income vs Expenses card.`
 
@@ -87,6 +88,12 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 - `Later they can use the listed subjects for Class scheduler, Study planner, Time tracker and Question Generator.`
 - `Created subjects colors will be shown as line color in the line chart.`
 
+### Additional Feeatures:
+
+- Day and Night mode.
+- Proper error handling.
+- Fully responsive UI.
+
 ## Technologies I Used
 
 ### Frontend:
@@ -106,6 +113,7 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 
 ### Backend:
 
+- typescript
 - bcryptjs: ^3.0.2
 - cookie-parser: ^1.4.7
 - cors: ^2.8.5
@@ -123,4 +131,6 @@ Here is the deep overviews of all the tools and features. Unique fearures are `h
 
 - GPT 4.1 nano
 
-  ##### **Note:** Most of the filter, sorting and search fearures are handled from frontend to express my react skill. Because frontend is the priority here,
+  ##### **Note:** Most of the filter, sorting and search fearures are handled from frontend to express my react skill. Because frontend is the priority here.
+
+  ### Thank You!

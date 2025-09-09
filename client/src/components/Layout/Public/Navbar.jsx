@@ -19,7 +19,7 @@ const Navbar = () => {
         {/* Desktop menu */}
         <ul className="menu menu-horizontal px-1 hidden sm:flex gap-2">
           <li>
-            <a href="#hero">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <a href="#features">Features</a>
@@ -32,7 +32,7 @@ const Navbar = () => {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              <li className="btn btn-sm btn-accent">
+              <li className="btn btn-sm btn-accent mr-2">
                 <Link to="/register">Get Started</Link>
               </li>
             </>
@@ -89,7 +89,9 @@ const Navbar = () => {
         <div className="sm:hidden absolute top-full left-0 w-full bg-base-100 shadow-md z-40">
           <ul className="menu menu-vertical px-4 py-2 gap-2">
             <li>
-              <a href="#hero">Home</a>
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                Home
+              </Link>
             </li>
             <li>
               <a href="#features" onClick={() => setIsOpen(false)}>

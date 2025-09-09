@@ -105,7 +105,7 @@ export const getAllQuestions = async (
     }
 
     const questions = await Question.find(filter).sort({ createdAt: -1 });
-    const totalQuestions = await Question.countDocuments();
+    const totalQuestions = await Question.countDocuments({ user: userId });
     res.json({ questions, totalQuestions });
   } catch (error: any) {
     console.error("Error fetching questions:", error);

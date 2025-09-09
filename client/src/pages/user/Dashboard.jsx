@@ -275,7 +275,13 @@ const Dashboard = () => {
               </div>
               <div
                 role="alert"
-                className={`alert alert-soft alert-${financialStatus.type}`}
+                className={`alert alert-soft ${
+                  financialStatus.type === "error"
+                    ? "alert-error"
+                    : financialStatus.type === "warning"
+                    ? "alert-warning"
+                    : "alert-success"
+                }`}
               >
                 {financialStatus.type == "warning" ? (
                   <svg
